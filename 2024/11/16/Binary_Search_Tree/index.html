@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Binary_Search_Tree | 
+	 
+	Hexo
+	</title>
+	
+	<!-- keywords,description -->
+	
+	
+
+	<!-- favicon -->
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+
+	
+	
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Hexo</a>
+
+	<ul id="menu">
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="file active">
+									<a href="/2024/11/16/Binary_Search_Tree/">
+                     
+										    Binary_Search_Tree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/11/16/hello-world/">
+                     
+										    hello-world
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2024/11/16/how-to-start-personal-blog/">
+                     
+										    how-to-start-personal-blog
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	Binary_Search_Tree
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>HuiWen</span>
+	<span>2024-11-16 21:31:46</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h2 id="Binary-Search-Tree"><a href="#Binary-Search-Tree" class="headerlink" title="Binary_Search_Tree"></a>Binary_Search_Tree</h2><p>Traversing Binary Tree</p>
+<p>Pre_Order_Traverse 前序遍历</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  1--&gt;2</span><br><span class="line">  2--&gt;3</span><br><span class="line">  3--&gt;4</span><br><span class="line">  3--&gt;5</span><br><span class="line">  1--&gt;6</span><br><span class="line">  6--&gt;7</span><br><span class="line">  7--&gt;8</span><br><span class="line">  6--&gt;9</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PreOrderTraverse</span> <span class="params">(BiTree T)</span>&#123;<span class="comment">//[1[2[3[4[n   ][5[n  ]]] n  ]  6 ]</span></span><br><span class="line">    <span class="keyword">if</span> ( T == <span class="literal">NULL</span> )             <span class="comment">//         n n       n n    n n</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,T-&gt;data);        <span class="comment">//1 2 3 4         5              6</span></span><br><span class="line">    PreorderTraverse(T-&gt;lchild); <span class="comment">//2 3 4 n         n              7</span></span><br><span class="line">    PreorderTraverse(T-&gt;rchild); <span class="comment">//          n 5    n      n  6  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In_Order_Traverse 中序遍历</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  5--&gt;4</span><br><span class="line">  4--&gt;2</span><br><span class="line">  2--&gt;1</span><br><span class="line">  2--&gt;3</span><br><span class="line">  5--&gt;8</span><br><span class="line">  8--&gt;6</span><br><span class="line">  6--&gt;7</span><br><span class="line">  8--&gt;9</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">InOrderTraverse</span> <span class="params">(BiTree T)</span>&#123;<span class="comment">//</span></span><br><span class="line">  <span class="keyword">if</span>(T == <span class="literal">NULL</span>)                 <span class="comment">//</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  InorderTraverse(T-&gt;lchild):   <span class="comment">//</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,T-&gt;data);         <span class="comment">//</span></span><br><span class="line">  InorderTraverse(T-&gt;rchild):   <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Post_Order_Traverse 后序遍历</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  9--&gt;4</span><br><span class="line">  4--&gt;3</span><br><span class="line">  3--&gt;1</span><br><span class="line">  3--&gt;2</span><br><span class="line">  9--&gt;8</span><br><span class="line">  8--&gt;6</span><br><span class="line">  8--&gt;7</span><br><span class="line">  6--&gt;5</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PostOrderTraverse</span><span class="params">(BiTree T)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(T = <span class="literal">NULL</span>)</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">  PostOrderTraverse(T-&gt;lchild);</span><br><span class="line">  PostOrderTraverse(T-&gt;rchild);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,T-&gt;data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Level_Order_Traverse 层序遍历</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  1--&gt;2</span><br><span class="line">  2--&gt;4</span><br><span class="line">  4--&gt;7</span><br><span class="line">  4--&gt;8</span><br><span class="line">  1--&gt;3</span><br><span class="line">  3--&gt;5</span><br><span class="line">  3--&gt;6</span><br><span class="line">  5--&gt;9</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2024/11/16/how-to-start-personal-blog/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  how_to_start_personal_blog
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2024/11/16/hello-world/">
+                Hello World
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©<span id="footerYear-start"></span>-<span id="footerYear-end"></span>
+
+	
+	    <a href="/">HuiWen</a>
+	
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//wujun.me" target="_blank">Wu Jun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+<script type="text/javascript">
+	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+</script>
+
+<script type="text/javascript">
+	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+</script>
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
