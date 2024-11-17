@@ -11,7 +11,7 @@
 	
 		how_to_start_personal_blog | 
 	 
-	Hexo
+	Huiwen Learning Notes
 	</title>
 	
 	<!-- keywords,description -->
@@ -71,7 +71,7 @@
 
 <body>
 	<header id="header">
-    <a id="title" href="/" class="logo">Hexo</a>
+    <a id="title" href="/" class="logo">Huiwen Learning Notes</a>
 
 	<ul id="menu">
     
@@ -101,17 +101,6 @@
 									<a href="/2024/11/16/Binary_Search_Tree/">
                      
 										    Binary_Search_Tree
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2024/11/16/hello-world/">
-                     
-										    hello-world
                      
 									</a>
 								</li>
@@ -162,33 +151,65 @@
 
 <!-- content -->
 <div id="article-content">
-	<h5 id="Local-Machine"><a href="#Local-Machine" class="headerlink" title="Local Machine"></a>Local Machine</h5><ol>
+	<h5 id="Local-Machine">Local Machine</h5>
+<ol>
 <li>Install npm and node.js on local machine</li>
 <li>Generate ssh key on local machine and add it on github</li>
 </ol>
-<h5 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h5><ol>
-<li>Build repo with username.io</li>
+<h5 id="Github-Pages">Github Pages</h5>
+<ol>
+<li>Build repo with <a target="_blank" rel="noopener" href="http://username.io">username.io</a></li>
 <li>Use Hexo theme on hexo pages</li>
 </ol>
-<h5 id="Basic-Command"><a href="#Basic-Command" class="headerlink" title="Basic Command"></a>Basic Command</h5><ol>
-<li>hexo clean<ul>
+<h5 id="Basic-Command">Basic Command</h5>
+<ol>
+<li>hexo clean
+<ul>
 <li>Remove public folder</li>
 </ul>
 </li>
-<li>hexo generate<ul>
+<li>hexo generate
+<ul>
 <li>Generate public folder</li>
 </ul>
 </li>
-<li>hexo server<ul>
+<li>hexo server
+<ul>
 <li>Preview render pages on local machine</li>
 </ul>
 </li>
-<li>hexo deploy<ul>
+<li>hexo deploy
+<ul>
 <li>Deploy render pages to github pages</li>
 </ul>
 </li>
 </ol>
-<p>This blog was powered by:<br><a target="_blank" rel="noopener" href="https://github.com/wujun234/hexo-theme-tree">https://github.com/wujun234/hexo-theme-tree</a></p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/docs/writing">https://hexo.io/docs/writing</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Layout</th>
+<th style="text-align:left">Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">post</td>
+<td style="text-align:left">source/_posts</td>
+</tr>
+<tr>
+<td style="text-align:left">page</td>
+<td style="text-align:left">source</td>
+</tr>
+<tr>
+<td style="text-align:left">draft</td>
+<td style="text-align:left">source/_drafts</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<p>This blog was powered by:<br>
+<a target="_blank" rel="noopener" href="https://github.com/wujun234/hexo-theme-tree">https://github.com/wujun234/hexo-theme-tree</a></p>
 
 </div>
 
@@ -245,6 +266,13 @@
 <script type="text/javascript">
 	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
 </script>
+
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
 
 	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
 </body>
