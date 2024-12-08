@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		splaytree | 
+	 
+	Huiwen Learning Notes
+	</title>
+	
+	<!-- keywords,description -->
+	
+	
+
+	<!-- favicon -->
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+
+	
+	
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Huiwen Learning Notes</a>
+
+	<ul id="menu">
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										computer_arch
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/computer_arch/Chap1-fundamental-quantitative-design-n-analysis/">
+                     
+										    Chap1-fundamental-quantitative-design-n-analysis
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										data_str_and_algo
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/binary_search_tree/">
+                     
+										    binary_search_tree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/data_str_and_algo/splaytree/">
+                     
+										    splaytree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/stack/">
+                     
+										    stack
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										other
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/other/how-to-start-personal-blog/">
+                     
+										    how-to-start-personal-blog
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/splay/">
+                     
+										    splay
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	splaytree
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>HuiWen</span>
+	<span>2024-12-07 12:27:25</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h2 id="Splay-Tree-Search-System-Analysis-Report">Splay Tree Search System Analysis Report</h2>
+<h3 id="Overrall-mindmap">Overrall mindmap</h3>
+<pre class="mermaid">graph TB
+    subgraph file_handling
+    input_txt_file--> B[read_file]
+    I[append_contact]
+    J[delete_contact]
+    end
+    subgraph splaytree_test
+    B --> C[Stuct student_info<br>Node* node<br>Struct SplayTree]
+    C --> D[read_argv]
+    end
+    subgraph splaytree_top
+    D--search--> E[search_splaytree]
+    D--insert--> F[insert_splaytree]--search--> E
+    D--delete--> G[delete_splaytree]--search--> E
+    end
+    subgraph splaytree_bot
+    E--> postorder_search--search--> H[splay]
+    E--> inorder_search--search--> H
+    E--> preorder_search--search--> H
+    end
+    splaytree_bot--insert--> I
+    splaytree_bot--delete--> J</pre>
+<h3 id="Tree-traversal-technique-Search-splaytree">Tree traversal technique - Search_splaytree</h3>
+<ol>
+<li>postorder_search<br>
+left node -&gt; right node -&gt; root node</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Node* <span class="title function_">postorder_search</span><span class="params">(Node* node, <span class="type">const</span> <span class="type">char</span>* target_name)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">// Early return if node is NULL</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Search the left subtree first</span></span><br><span class="line">    Node* left_result = postorder_search(node-&gt;left, target_name);</span><br><span class="line">    <span class="keyword">if</span> (left_result != <span class="literal">NULL</span>) <span class="keyword">return</span> left_result;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Search the right subtree</span></span><br><span class="line">    Node* right_result = postorder_search(node-&gt;right, target_name);</span><br><span class="line">    <span class="keyword">if</span> (right_result != <span class="literal">NULL</span>) <span class="keyword">return</span> right_result;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the current node matches the target, return the node</span></span><br><span class="line">    <span class="keyword">if</span> (strcasecmp(node-&gt;key, target_name) == <span class="number">0</span>) <span class="keyword">return</span> node;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">// Node not found</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>inorder_search<br>
+left node-&gt; root node -&gt; right node</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Node* <span class="title function_">inorder_search</span><span class="params">(Node* node, <span class="type">const</span> <span class="type">char</span>* target_name)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">// Early return if node is NULL</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Search the left subtree first</span></span><br><span class="line">    Node* left_result = inorder_search(node-&gt;left, target_name);</span><br><span class="line">    <span class="keyword">if</span> (left_result != <span class="literal">NULL</span>) <span class="keyword">return</span> left_result;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the current node matches the target, return the node</span></span><br><span class="line">    <span class="keyword">if</span> (strcasecmp(node-&gt;key, target_name) == <span class="number">0</span>) <span class="keyword">return</span> node;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Search the right subtree</span></span><br><span class="line">    <span class="keyword">return</span> inorder_search(node-&gt;right, target_name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>preorder_search<br>
+root node -&gt; left node -&gt; right node</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Node* <span class="title function_">preorder_search</span><span class="params">(Node* node, <span class="type">const</span> <span class="type">char</span>* target_name)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (node == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">// Early return if node is NULL</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// If the current node matches the target, return the node</span></span><br><span class="line">    <span class="keyword">if</span> (strcasecmp(node-&gt;key, target_name) == <span class="number">0</span>) <span class="keyword">return</span> node;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Recursively search in the left and right subtrees</span></span><br><span class="line">    Node* left_result = preorder_search(node-&gt;left, target_name);</span><br><span class="line">    <span class="keyword">if</span> (left_result != <span class="literal">NULL</span>) <span class="keyword">return</span> left_result;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Search the right subtree</span></span><br><span class="line">    <span class="keyword">return</span> preorder_search(node-&gt;right, target_name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Insert-splaytree">Insert_splaytree</h3>
+<h3 id="Delete-splaytree">Delete_splaytree</h3>
+<pre><code>H--&gt; O[zig&lt;br&gt;right]
+H--&gt; P[zag&lt;br&gt;left]
+H--&gt; Q[zig zig&lt;br&gt;right right]
+H--&gt; R[zag zag&lt;br&gt;left left]
+H--&gt; S[zig zag&lt;br&gt;right left]
+H--&gt; T[zag zig&lt;br&gt;left right]
+</code></pre>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/splay/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  splay
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/computer_arch/Chap1-fundamental-quantitative-design-n-analysis/">
+                Chap1_fundamental_quantitative_desigßn_n_analysis
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©<span id="footerYear-start"></span>-<span id="footerYear-end"></span>
+
+	
+	    <a href="/">HuiWen</a>
+	
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//wujun.me" target="_blank">Wu Jun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+<script type="text/javascript">
+	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+</script>
+
+<script type="text/javascript">
+	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+</script>
+
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
