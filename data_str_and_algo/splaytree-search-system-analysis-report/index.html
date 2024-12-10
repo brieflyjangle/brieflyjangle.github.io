@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		splaytree_search_system_analysis_report | 
+	 
+	Huiwen Learning Notes
+	</title>
+	
+	<!-- keywords,description -->
+	
+	
+
+	<!-- favicon -->
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+
+	
+	
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Huiwen Learning Notes</a>
+
+	<ul id="menu">
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										computer_arch
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/computer_arch/Chap1-fundamental-quantitative-design-n-analysis/">
+                     
+										    Chap1-fundamental-quantitative-design-n-analysis
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										data_str_and_algo
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/binary_search_tree/">
+                     
+										    binary_search_tree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/data_str_and_algo/splaytree-search-system-analysis-report/">
+                     
+										    splaytree-search-system-analysis-report
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/splaytree/">
+                     
+										    splaytree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/stack/">
+                     
+										    stack
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										other
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/other/how-to-start-personal-blog/">
+                     
+										    how-to-start-personal-blog
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	splaytree_search_system_analysis_report
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>HuiWen</span>
+	<span>2024-12-08 13:07:47</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h2 id="Script-workflow-overview">Script workflow overview</h2>
+<pre class="mermaid">graph TB
+    subgraph file_handling
+    input_txt_file--> B[read_file]
+    I[append_contact]
+    J[delete_contact]
+    end
+    subgraph splaytree_test
+    B --> C[Stuct student_info<br>Node* node<br>Struct SplayTree]
+    C --> D[read_argv]
+    end
+    subgraph splaytree_top
+    D--search--> E[search_splaytree]
+    D--insert--> F[insert_splaytree]
+    F--search--> E
+    D--delete--> G[delete_splaytree]
+    G--search--> E
+    end
+    subgraph splaytree_bot
+    E--> M[postorder_search]
+    M--search/delete/insert--> H[splay]
+    E--> K[inorder_search]
+    K--search/delete/insert--> H
+    E--> L[preorder_search]
+    L--search/delete/insert--> H
+    end
+    H--insert--> I
+    H--delete--> J</pre>
+<hr>
+<h2 id="Search-splaytree">Search_splaytree</h2>
+<p><code>search_splaytree</code> function dynamically selects the traversal method (preorder, inorder, or postorder) based on the value of traversal_type.</p>
+<h3 id="1-Input-Parameters">1. Input Parameters</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Node* <span class="title function_">search_splaytree</span><span class="params">(SplayTree* tree, <span class="type">const</span> <span class="type">char</span>* key, <span class="type">const</span> <span class="type">char</span>* traversal_type)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>tree</code></strong>: Pointer to the splay tree in which the search is performed.</li>
+<li><strong><code>key</code></strong>: The key (unique identifier) of the node you want to find.</li>
+<li><strong><code>traversal_type</code></strong>: A string that specifies the traversal method:
+<ul>
+<li><code>'p'</code> for preorder</li>
+<li><code>'i'</code> for inorder</li>
+<li><code>'o'</code> for postorder</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Switch-Statement-for-Traversal-Type">2. Switch Statement for Traversal Type</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (traversal_type[<span class="number">0</span>]) &#123;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>The function examines the first character of the <code>traversal_type</code> string (<code>traversal_type[0]</code>).</li>
+<li>Depending on its value, it calls the appropriate traversal-based search function.</li>
+</ul>
+<h4 id="Preorder-Traversal">Preorder Traversal</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">&#x27;p&#x27;</span>:  <span class="comment">// Preorder -&gt; search, insert</span></span><br><span class="line">    <span class="keyword">return</span> preorder_search(tree-&gt;root, key);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Preorder traversal</strong> is used for general searches (like when inserting).</li>
+<li>The <code>preorder_search</code> function traverses the tree in <strong>Root → Left → Right</strong> order and searches for a node with the given <code>key</code>.</li>
+</ul>
+<p>For a binary tree:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    A</span><br><span class="line">   / \</span><br><span class="line">  B   C</span><br><span class="line"> / \</span><br><span class="line">D   E</span><br></pre></td></tr></table></figure>
+<p>Preorder Traversal: <code>A B D E C</code></p>
+<h4 id="Inorder-Traversal">Inorder Traversal</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">&#x27;i&#x27;</span>:  <span class="comment">// Inorder</span></span><br><span class="line">    <span class="keyword">return</span> inorder_search(tree-&gt;root, key);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Inorder traversal</strong> visits nodes in <strong>Left → Root → Right</strong> order.</li>
+<li>While not typically used for key-based searches in a binary search tree, it can be helpful for operations requiring sorted order traversal.</li>
+</ul>
+<p>For a binary tree:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    A</span><br><span class="line">   / \</span><br><span class="line">  B   C</span><br><span class="line"> / \</span><br><span class="line">D   E</span><br></pre></td></tr></table></figure>
+<p>Inorder Traversal: <code>D B E A C</code></p>
+<h4 id="Postorder-Traversal">Postorder Traversal</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">&#x27;o&#x27;</span>:  <span class="comment">// Postorder -&gt; delete</span></span><br><span class="line">    <span class="keyword">return</span> postorder_search(tree-&gt;root, key);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>Postorder traversal</strong> follows the order <strong>Left → Right → Root</strong>.</li>
+<li>It’s often used in tree deletion processes, as it processes child nodes before the root.</li>
+</ul>
+<p>For a binary tree:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    A</span><br><span class="line">   / \</span><br><span class="line">  B   C</span><br><span class="line"> / \</span><br><span class="line">D   E</span><br></pre></td></tr></table></figure>
+<p>Postorder Traversal: <code>D E B C A</code></p>
+<h3 id="3-Default-Case-Invalid-Traversal-Type">3. <strong>Default Case: Invalid Traversal Type</strong></h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Invalid traversal type.\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;  <span class="comment">// Invalid traversal type</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>If the <code>traversal_type</code> does not match <code>'p'</code>, <code>'i'</code>, or <code>'o'</code>, the function:
+<ul>
+<li>Prints an error message.</li>
+<li>Returns <code>NULL</code> to indicate failure.</li>
+</ul>
+</li>
+</ul>
+<h3 id="How-the-function-Works">How the function Works</h3>
+<ul>
+<li>Based on the provided <code>traversal_type</code>, the function determines which traversal to use.</li>
+<li>The corresponding traversal search function is invoked to locate the node with the given <code>key</code>.</li>
+<li>If the traversal type is invalid, the function gracefully handles it and returns <code>NULL</code>.</li>
+</ul>
+<hr>
+<h2 id="Insert-splaytree">Insert_splaytree</h2>
+<p><code>insert_splaytree</code> attempts to insert a new node with the given id, name, class, and record into the splay tree. If a node with the same id already exists, it prevents duplication.</p>
+<h3 id="1-Search-for-an-Existing-Node">1. Search for an Existing Node</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">current = search_splaytree(tree, id, <span class="string">&quot;preorder&quot;</span>);  <span class="comment">// Search for the node before insertion</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>The <code>search_splaytree</code> function is called to check if a node with the given <code>id</code> already exists in the tree.
+<ul>
+<li>It uses the “preorder” traversal method for searching (though typically, splay trees are searched based on key comparison without traversals).</li>
+</ul>
+</li>
+<li>If a node is found (<code>current != NULL</code>), the function prevents duplicate insertion and exits early.</li>
+</ul>
+<h3 id="2-Create-and-Insert-a-New-Node">2. Create and Insert a New Node</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (current == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    Node* newNode = create_node(id, name, class, record); </span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>If no node with the same <code>id</code> exists, a new node is created using the <code>create_node</code> function, which allocates memory for a new <code>Node</code> and initializes its attributes.</p>
+<h4 id="Case-1-Tree-is-Empty">Case 1: Tree is Empty</h4>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (tree-&gt;root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="comment">// Tree is empty, new node becomes root</span></span><br><span class="line">    tree-&gt;root = newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>If the tree is empty (<code>tree-&gt;root == NULL</code>), the new node is set as the root of the tree.</p>
+<h4 id="Case-2-Tree-is-Non-Empty">Case 2: Tree is Non-Empty</h4>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Otherwise, find the parent node</span></span><br><span class="line">    current = tree-&gt;root;</span><br><span class="line">    <span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        parent = current;</span><br><span class="line">        <span class="keyword">if</span> (strcasecmp(id, current-&gt;key) &lt; <span class="number">0</span>)</span><br><span class="line">            current = current-&gt;left;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            current = current-&gt;right;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Insert the new node as the left or right child of the parent</span></span><br><span class="line">    <span class="keyword">if</span> (strcasecmp(name, parent-&gt;key) &lt; <span class="number">0</span>)</span><br><span class="line">        parent-&gt;left = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent-&gt;right = newNode;</span><br><span class="line"></span><br><span class="line">    newNode-&gt;parent = parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a. <strong>Traverse the Tree</strong>:</p>
+<ul>
+<li>Start from the root (<code>tree-&gt;root</code>) and traverse the tree to find the correct position for the new node, based on its <code>id</code> (not <code>name</code>—this part seems incorrect, see below).</li>
+</ul>
+<p>b. <strong>Comparison Logic</strong>:</p>
+<ul>
+<li>The <code>id</code> is compared to the <code>key</code> of the current node:
+<ul>
+<li>If <code>id</code> is smaller, traverse to the <strong>left child</strong>.</li>
+<li>If <code>id</code> is larger, traverse to the <strong>right child</strong>.</li>
+</ul>
+</li>
+</ul>
+<p>c. <strong>Insert the Node</strong>:</p>
+<ul>
+<li>Once the correct parent node is found, the new node is inserted as the <strong>left</strong> or <strong>right child</strong> based on the comparison.</li>
+</ul>
+<p>d. <strong>Set Parent</strong>:</p>
+<ul>
+<li>The <code>parent</code> pointer of the new node is updated to point to the node it was inserted under.</li>
+</ul>
+<h3 id="3-Splay-the-New-Node">3. Splay the New Node</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// After insertion, bring the new node to the root using splay</span></span><br><span class="line">splay(tree, newNode);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>After insertion, the <strong>splay operation</strong> is performed on the newly inserted node.</li>
+<li>This ensures that the new node is moved to the root, maintaining the splay tree’s balancing property:
+<ul>
+<li>Recently accessed nodes are closer to the root, which optimizes subsequent accesses.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-Handle-Duplicates">4. Handle Duplicates</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Node with name &#x27;%s&#x27; already exists!\n&quot;</span>, id);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>If the <code>search_splaytree</code> function finds a node with the same <code>id</code>, the function prints a message and exits without inserting a duplicate.</li>
+</ul>
+<h3 id="How-the-Function-Works"><strong>How the Function Works</strong></h3>
+<ol>
+<li>
+<p><strong>Pre-Insertion Search</strong>:</p>
+<ul>
+<li>The tree is searched to check for duplicate nodes using the <code>id</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Insertion</strong>:</p>
+<ul>
+<li>If no duplicate exists:
+<ul>
+<li>If the tree is empty, the new node becomes the root.</li>
+<li>Otherwise, the new node is inserted as a left or right child of its parent based on comparisons.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Balancing</strong>:</p>
+<ul>
+<li>The new node is brought to the root of the tree by <strong>splaying</strong>, ensuring the splay tree’s efficiency for future operations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Duplicate Handling</strong>:</p>
+<ul>
+<li>If a duplicate <code>id</code> is found, the function exits with a message.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="Delete-splaytree">Delete_splaytree</h2>
+<p>The <code>delete_splaytree</code> function removes a node with the specified <code>key</code> from a <strong>splay tree</strong> while maintaining the tree’s structure and properties.</p>
+<h3 id="1-Search-for-the-Node-to-Delete">1. Search for the Node to Delete</h3>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Node* current = search_splaytree(tree, key, <span class="string">&quot;preorder&quot;</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>The function first searches for the node with the given <code>key</code> using a preorder traversal.</li>
+<li>If the node is found (<code>current != NULL</code>), it proceeds with the deletion; otherwise, it prints an error message and exits.</li>
+</ul>
+<h3 id="2-Splay-the-Node-to-the-Root">2. Splay the Node to the Root</h3>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">splay(tree, current);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Before deletion, the node to be deleted is splayed (brought to the root).</li>
+<li>Splaying ensures that the deletion logic is simplified because the node is now the root.</li>
+</ul>
+<h3 id="3-Handle-the-Three-Cases-of-Deletion">3. Handle the Three Cases of Deletion</h3>
+<h4 id="Case-1-Node-Has-No-Children">Case 1: Node Has No Children</h4>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (current-&gt;left == <span class="literal">NULL</span> &amp;&amp; current-&gt;right == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    tree-&gt;root = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">free</span>(current);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>If the node has no children, it is simply removed, and the root is set to <code>NULL</code>.</li>
+</ul>
+<h4 id="Case-2-Node-Has-One-Child">Case 2: Node Has One Child</h4>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (current-&gt;left == <span class="literal">NULL</span> || current-&gt;right == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    Node* child = (current-&gt;left) ? current-&gt;left : current-&gt;right;</span><br><span class="line">    <span class="keyword">if</span> (current == tree-&gt;root) &#123;</span><br><span class="line">        tree-&gt;root = child;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (current == current-&gt;parent-&gt;left)</span><br><span class="line">            current-&gt;parent-&gt;left = child;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            current-&gt;parent-&gt;right = child;</span><br><span class="line"></span><br><span class="line">        child-&gt;parent = current-&gt;parent;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(current);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>If the node has only one child:
+<ul>
+<li>The child replaces the node in the tree.</li>
+<li>The child’s <code>parent</code> pointer is updated to point to the node’s parent.</li>
+<li>If the node is the root, the child becomes the new root.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Case-3-Node-Has-Two-Children">Case 3: Node Has Two Children</h4>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    Node* successor = current-&gt;right;</span><br><span class="line">    <span class="keyword">while</span> (successor-&gt;left != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        successor = successor-&gt;left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Replace current node&#x27;s data with successor&#x27;s data</span></span><br><span class="line">    <span class="built_in">strcpy</span>(current-&gt;key, successor-&gt;key);</span><br><span class="line">    <span class="built_in">strcpy</span>(current-&gt;name, successor-&gt;name);</span><br><span class="line">    <span class="built_in">strcpy</span>(current-&gt;class, successor-&gt;class);</span><br><span class="line">    <span class="built_in">strcpy</span>(current-&gt;record, successor-&gt;record);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Successor will have at most one child (right child)</span></span><br><span class="line">    Node* child = successor-&gt;right;</span><br><span class="line">    <span class="keyword">if</span> (successor-&gt;parent-&gt;left == successor)</span><br><span class="line">        successor-&gt;parent-&gt;left = child;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        successor-&gt;parent-&gt;right = child;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (child != <span class="literal">NULL</span>) </span><br><span class="line">        child-&gt;parent = successor-&gt;parent;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(successor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>If the node has two children:
+<ul>
+<li>The <strong>in-order successor</strong> (smallest node in the right subtree) is located.</li>
+<li>The data from the successor node is copied to the current node.</li>
+<li>The successor node is removed, which is simplified because it will have at most one child (right child).</li>
+<li>If the successor has a right child, it replaces the successor in the tree.</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-Return-Success-or-Failure">4. Return Success or Failure</h3>
+   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>If the node was deleted successfully, the function returns <code>1</code>.</li>
+<li>If the node was not found, it returns <code>0</code> and prints an error message.</li>
+</ul>
+<h3 id="How-the-Function-Works-2">How the Function Works</h3>
+<ol>
+<li>Searches for the node to delete.</li>
+<li>Splays the node to bring it to the root.</li>
+<li>Handles deletion based on the node’s number of children:
+<ul>
+<li>No children → Remove directly.</li>
+<li>One child → Replace with the child.</li>
+<li>Two children → Replace data with successor and remove the successor.</li>
+</ul>
+</li>
+<li>Updates the tree structure to maintain validity after deletion.</li>
+<li>Returns success or failure based on whether the node was found.</li>
+</ol>
+<hr>
+<h2 id="Time-Complexity">Time Complexity</h2>
+<blockquote>
+<p>The <strong>time complexity</strong> of <strong>preorder</strong>, <strong>inorder</strong>, and <strong>postorder traversal</strong> techniques for a binary tree is the same. Here’s why:</p>
+</blockquote>
+<ul>
+<li>For a binary tree with ( n ) nodes:
+<ul>
+<li>Each node is visited exactly <strong>once</strong> during any traversal.</li>
+<li>During the visit, a constant amount of work (like printing the value or performing an operation) is performed.</li>
+</ul>
+</li>
+</ul>
+<p>Thus, the time complexity for <strong>all three traversal techniques</strong> is O(n)</p>
+<ul>
+<li><strong>Preorder, Inorder, and Postorder Traversals</strong> use <strong>recursive calls</strong> for left and right subtrees. The number of recursive calls is proportional to the number of nodes.</li>
+<li>If a tree has ( n ) nodes, the traversal algorithm will visit each node once, leading to a linear time complexity.</li>
+</ul>
+<h2 id="Space-Complexity">Space Complexity</h2>
+<p>The <strong>space complexity</strong> depends on the depth of the recursion stack:</p>
+<ul>
+<li><strong>Best Case (Balanced Tree)</strong>: ( O(\log n) ) for a balanced tree where the depth is ( \log n ).</li>
+<li><strong>Worst Case (Skewed Tree)</strong>: ( O(n) ) for a completely skewed tree (all nodes have one child).</li>
+</ul>
+<hr>
+<h3 id="Theory-of-Splay-Trees"><strong>Theory of Splay Trees</strong></h3>
+<p>A <strong>splay tree</strong> is a self-adjusting binary search tree that brings the most recently accessed node to the root through a process called <strong>splaying</strong>. This adjustment improves the efficiency of subsequent operations on the same or nearby elements.</p>
+<hr>
+<h3 id="Key-Properties-of-Splay-Trees"><strong>Key Properties of Splay Trees</strong></h3>
+<ol>
+<li>
+<p><strong>Self-Adjusting</strong>:</p>
+<ul>
+<li>After any operation (search, insert, delete), the accessed node is splayed to the root.</li>
+<li>This ensures that frequently accessed nodes are near the root, reducing access time for future operations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Binary Search Tree (BST) Property</strong>:</p>
+<ul>
+<li>Like all binary search trees:
+<ul>
+<li>Nodes in the left subtree of a node have keys smaller than the node’s key.</li>
+<li>Nodes in the right subtree have keys greater than the node’s key.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Amortized Efficiency</strong>:</p>
+<ul>
+<li>Although a single operation may take (O(n)) time in the worst case, the <strong>amortized cost</strong> of operations (over a sequence of operations) is (O(\log n)).</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="How-Splay-Trees-Work"><strong>How Splay Trees Work</strong></h3>
+<h4 id="1-Basic-Operations"><strong>1. Basic Operations</strong></h4>
+<p>The basic operations of a splay tree are:</p>
+<ul>
+<li><strong>Search</strong>: Find a node by key and bring it to the root.</li>
+<li><strong>Insert</strong>: Add a new node to the tree and splay it to the root.</li>
+<li><strong>Delete</strong>: Remove a node and reorganize the tree such that it remains valid, splaying the predecessor or successor of the deleted node to the root.</li>
+</ul>
+<h4 id="2-The-Splay-Operation"><strong>2. The Splay Operation</strong></h4>
+<p>The <strong>splay operation</strong> is the core of splay trees. It rearranges the tree to bring a specified node (<code>x</code>) to the root using rotations. Splaying ensures that nodes accessed recently or frequently are near the root, optimizing access times.</p>
+<hr>
+<h3 id="Rotation-Cases-in-Splay-Trees"><strong>Rotation Cases in Splay Trees</strong></h3>
+<p>The splay operation works by repeatedly applying one of the following rotations until the target node becomes the root.</p>
+<h4 id="Case-1-Zig-Single-Rotation"><strong>Case 1: Zig (Single Rotation)</strong></h4>
+<ul>
+<li><strong>When?</strong>
+<ul>
+<li>The node (<code>x</code>) has no grandparent (it is the child of the root).</li>
+</ul>
+</li>
+<li><strong>Action:</strong>
+<ul>
+<li>Perform a single rotation (either left or right) to make <code>x</code> the root.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Case-2-Zig-Zig-Double-Rotation"><strong>Case 2: Zig-Zig (Double Rotation)</strong></h4>
+<ul>
+<li><strong>When?</strong>
+<ul>
+<li>The node (<code>x</code>) and its parent are both left children (or both right children).</li>
+</ul>
+</li>
+<li><strong>Action:</strong>
+<ul>
+<li>Perform two rotations in the same direction:
+<ol>
+<li>Rotate the grandparent with the parent.</li>
+<li>Rotate the parent with the node.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Case-3-Zig-Zag-Double-Rotation"><strong>Case 3: Zig-Zag (Double Rotation)</strong></h4>
+<ul>
+<li><strong>When?</strong>
+<ul>
+<li>The node (<code>x</code>) is a left child, and its parent is a right child (or vice versa).</li>
+</ul>
+</li>
+<li><strong>Action:</strong>
+<ul>
+<li>Perform two rotations in opposite directions:
+<ol>
+<li>Rotate the parent with the node.</li>
+<li>Rotate the grandparent with the node.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Example-of-How-Splay-Tree-Works"><strong>Example of How Splay Tree Works</strong></h3>
+<h4 id="Initial-Tree">Initial Tree:</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    50</span><br><span class="line">   /  \</span><br><span class="line"> 30    70</span><br><span class="line"> / \</span><br><span class="line">20  40</span><br></pre></td></tr></table></figure>
+<h4 id="Search-for-Node-20"><strong>Search for Node 20:</strong></h4>
+<ol>
+<li>
+<p><strong>Locate Node 20</strong>:</p>
+<ul>
+<li>Traverse the tree: 50 → 30 → 20.</li>
+</ul>
+</li>
+<li>
+<p><strong>Splay Node 20 to Root</strong>:</p>
+<ul>
+<li><strong>Step 1 (Zig-Zig)</strong>: Rotate 30 with 50, then 20 with 30.</li>
+</ul>
+</li>
+</ol>
+<h4 id="Final-Tree">Final Tree:</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">20</span><br><span class="line">  \</span><br><span class="line">   30</span><br><span class="line">     \</span><br><span class="line">      50</span><br><span class="line">     /  \</span><br><span class="line">   40    70</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Advantages-of-Splay-Trees"><strong>Advantages of Splay Trees</strong></h3>
+<ol>
+<li><strong>Simple to Implement</strong>:
+<ul>
+<li>No need for height or color maintenance (unlike AVL or Red-Black Trees).</li>
+</ul>
+</li>
+<li><strong>Adaptive Performance</strong>:
+<ul>
+<li>Frequently accessed nodes are closer to the root, improving efficiency.</li>
+</ul>
+</li>
+<li><strong>Efficient Amortized Time Complexity</strong>:
+<ul>
+<li>All operations (search, insert, delete) have an <strong>amortized cost</strong> of (O(\log n)).</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="Limitations-of-Splay-Trees"><strong>Limitations of Splay Trees</strong></h3>
+<ol>
+<li><strong>Poor Worst-Case Performance</strong>:
+<ul>
+<li>Individual operations can take (O(n)) time in degenerate cases (e.g., when the tree becomes unbalanced).</li>
+</ul>
+</li>
+<li><strong>No Guarantees for Balanced Trees</strong>:
+<ul>
+<li>Unlike AVL or Red-Black Trees, splay trees do not ensure a balanced structure at all times.</li>
+</ul>
+</li>
+<li><strong>Not Optimal for Static Datasets</strong>:
+<ul>
+<li>If access patterns are not skewed (i.e., no frequently accessed nodes), other self-balancing trees may perform better.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="Applications-of-Splay-Trees"><strong>Applications of Splay Trees</strong></h3>
+<ol>
+<li><strong>Caching and Memory Management</strong>:
+<ul>
+<li>Frequently accessed data is brought closer to the root for fast retrieval.</li>
+</ul>
+</li>
+<li><strong>String Matching</strong>:
+<ul>
+<li>Efficient implementation of operations on substrings (used in data compression).</li>
+</ul>
+</li>
+<li><strong>Dynamic Sets</strong>:
+<ul>
+<li>Useful in scenarios where access patterns are skewed and frequently accessed elements dominate.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="Why-Use-a-Splay-Tree"><strong>Why Use a Splay Tree?</strong></h3>
+<p>Splay trees are an excellent choice when:</p>
+<ul>
+<li>Access patterns are non-uniform (some elements are accessed more frequently).</li>
+<li>You need a simple, self-adjusting data structure without the complexity of maintaining balance explicitly.</li>
+</ul>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/data_str_and_algo/splaytree/">
+                splaytree
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©<span id="footerYear-start"></span>-<span id="footerYear-end"></span>
+
+	
+	    <a href="/">HuiWen</a>
+	
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//wujun.me" target="_blank">Wu Jun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+<script type="text/javascript">
+	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+</script>
+
+<script type="text/javascript">
+	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+</script>
+
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+
+
+
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
