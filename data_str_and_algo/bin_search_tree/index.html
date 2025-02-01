@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	
 	<!-- title -->
@@ -67,11 +67,11 @@
 	
 	
 
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
-	<header id="header">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header">
     <a id="title" href="/" class="logo">Huiwen Learning Notes</a>
 
 	<ul id="menu">
@@ -258,11 +258,11 @@
 <li><strong>Unbalanced BST</strong>: (O(n)) (worst case)</li>
 </ul>
 <p>🔹 <strong>Example</strong>: Searching for 40 in this BST:</p>
-<pre class="line-numbers language-none"><code class="language-none">     50
+<pre class="language-none"><code class="language-none">     50
     &#x2F;  \
   30    70
  &#x2F;  \   &#x2F;  \
-20  40 60  80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+20  40 60  80</code></pre>
 <ul>
 <li>Start at 50 → 40 is smaller → move left.</li>
 <li>At 30 → 40 is greater → move right.</li>
@@ -282,11 +282,11 @@
 <li><strong>Unbalanced BST</strong>: (O(n))</li>
 </ul>
 <p>🔹 <strong>Example</strong>: Inserting <strong>25</strong> in the BST:</p>
-<pre class="line-numbers language-none"><code class="language-none">     50
+<pre class="language-none"><code class="language-none">     50
     &#x2F;  \
   30    70
  &#x2F;  \   &#x2F;  \
-20  40 60  80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+20  40 60  80</code></pre>
 <ul>
 <li>Start at 50 → 25 is smaller → move left.</li>
 <li>At 30 → 25 is smaller → move left.</li>
@@ -312,22 +312,22 @@
 <li><strong>Unbalanced BST</strong>: (O(n))</li>
 </ul>
 <p>🔹 <strong>Example</strong>: Deleting <strong>30</strong> from this BST:</p>
-<pre class="line-numbers language-none"><code class="language-none">     50
+<pre class="language-none"><code class="language-none">     50
     &#x2F;  \
   30    70
  &#x2F;  \   &#x2F;  \
-20  40 60  80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+20  40 60  80</code></pre>
 <ul>
 <li><strong>30 has two children</strong> (20, 40).</li>
 <li>Find the <strong>inorder successor (40)</strong>.</li>
 <li>Replace 30 with <strong>40</strong>, then delete <strong>40</strong>. ✅</li>
 </ul>
 <p><strong>New BST after deletion:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">     50
+<pre class="language-none"><code class="language-none">     50
     &#x2F;  \
   40    70
  &#x2F;      &#x2F;  \
-20     60  80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+20     60  80</code></pre>
 <hr>
 <h3 id="Summary-Table"><strong>Summary Table</strong></h3>
 <table>
@@ -366,13 +366,13 @@
   6-->7
   7-->8
   6-->9</pre>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void PreOrderTraverse (BiTree T)&#123;&#x2F;&#x2F;[1[2[3[4[n   ][5[n  ]]] n  ]  6 ]
+<pre class="language-c" data-language="c"><code class="language-c">void PreOrderTraverse (BiTree T)&#123;&#x2F;&#x2F;[1[2[3[4[n   ][5[n  ]]] n  ]  6 ]
     if ( T &#x3D;&#x3D; NULL )             &#x2F;&#x2F;         n n       n n    n n
         return
     printf(&quot;%c&quot;,T-&gt;data);        &#x2F;&#x2F;1 2 3 4         5              6
     PreorderTraverse(T-&gt;lchild); &#x2F;&#x2F;2 3 4 n         n              7
     PreorderTraverse(T-&gt;rchild); &#x2F;&#x2F;          n 5    n      n  6  
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 <p>In_Order_Traverse 中序遍历</p>
 <pre class="mermaid">graph TD
   5-->4
@@ -383,13 +383,13 @@
   8-->6
   6-->7
   8-->9</pre>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void InOrderTraverse (BiTree T)&#123;&#x2F;&#x2F;
+<pre class="language-c" data-language="c"><code class="language-c">void InOrderTraverse (BiTree T)&#123;&#x2F;&#x2F;
   if(T &#x3D;&#x3D; NULL)                 &#x2F;&#x2F;
     return;
   InorderTraverse(T-&gt;lchild):   &#x2F;&#x2F;
   printf(&quot;%c&quot;,T-&gt;data);         &#x2F;&#x2F;
   InorderTraverse(T-&gt;rchild):   &#x2F;&#x2F;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 <p>Post_Order_Traverse 后序遍历</p>
 <pre class="mermaid">graph TD
   9-->4
@@ -400,13 +400,13 @@
   8-->6
   8-->7
   6-->5</pre>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">void PostOrderTraverse(BiTree T)&#123;
+<pre class="language-c" data-language="c"><code class="language-c">void PostOrderTraverse(BiTree T)&#123;
   if(T &#x3D; NULL)
   return;
   PostOrderTraverse(T-&gt;lchild);
   PostOrderTraverse(T-&gt;rchild);
   printf(&quot;%c&quot;,T-&gt;data);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 <p>Level_Order_Traverse 层序遍历</p>
 <pre class="mermaid">graph TD
   1-->2
@@ -417,7 +417,7 @@
   3-->5
   3-->6
   5-->9</pre>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="language-c" data-language="c"><code class="language-c"></code></pre>
 
 </div>
 
@@ -485,6 +485,6 @@
 
 
 
-	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

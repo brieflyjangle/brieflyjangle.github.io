@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	
 	<!-- title -->
@@ -67,11 +67,11 @@
 	
 	
 
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
-	<header id="header">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header">
     <a id="title" href="/" class="logo">Huiwen Learning Notes</a>
 
 	<ul id="menu">
@@ -272,21 +272,22 @@ To handle a large number of student records (e.g., thousands of records) while m
     Teacher->>Database: search, insert, delete
     Parent->>Database: search 
     Student->>Database: search</pre>
-<h5 id="Details-description-for-each-use-cases-in-Student-Disciplinary-Record-System">Details description for each use cases in Student Disciplinary Record System</h5>
-<h5 id="Use-Case-1-Search">Use Case 1: Search</h5>
+<p>=======-</p>
+<h4 id="Details-description-for-each-use-cases-in-Student-Disciplinary-Record-System">Details description for each use cases in Student Disciplinary Record System</h4>
+<h4 id="Use-Case-1-Search">==Use Case 1: Search==</h4>
 <p>Searching system is using <code>search_splaytree</code> function dynamically selects the traversal method (preorder, inorder, or postorder) based on the value of traversal_type.</p>
 <ol>
 <li>Input Parameters of the <code>search_splaytree</code></li>
 </ol>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">Node* search_splaytree(SplayTree* tree, const char* key, const char* traversal_type)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="language-c" data-language="c"><code class="language-c">Node* search_splaytree(SplayTree* tree, const char* key, const char* traversal_type)</code></pre>
 <ul>
 <li><strong><code>tree</code></strong>: Pointer to the splay tree in which the search is performed.</li>
 <li><strong><code>key</code></strong>: The key (unique identifier) of the node you want to find.</li>
 <li><strong><code>traversal_type</code></strong>: A string that specifies the traversal method.</li>
-<li>Case Statement for <strong>traversal type</strong>.<pre class="line-numbers language-c" data-language="c"><code class="language-c">switch (traversal_type[0])
+<li>Case Statement for <strong>traversal type</strong>.<pre class="language-c" data-language="c"><code class="language-c">switch (traversal_type[0])
 - case &#96;&#39;p&#39;&#96; for preordr
 - case &#96;&#39;i&#39;&#96; for inorder
-- case &#96;&#39;o&#39;&#96; for postorder<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+- case &#96;&#39;o&#39;&#96; for postorder</code></pre>
 </li>
 <li>The function examines the first character of the <code>traversal_type</code> string (<code>traversal_type[0]</code>).</li>
 <li>Depending on its value, it calls the appropriate traversal-based search function.</li>
@@ -297,11 +298,11 @@ To handle a large number of student records (e.g., thousands of records) while m
 <ul>
 <li><code>Preorder_search</code> function traverses the tree in <strong>Root → Left → Right</strong> order and searches for a node with the given <code>key</code>.</li>
 <li>Preorder traversal is used for general searches (like when inserting).</li>
-<li>For a binary tree:<pre class="line-numbers language-none"><code class="language-none">    A
+<li>For a binary tree:<pre class="language-none"><code class="language-none">    A
    &#x2F; \
   B   C
  &#x2F; \
-D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+D   E</code></pre>
 </li>
 <li>Preorder Traversal: <code>A B D E C</code></li>
 </ul>
@@ -311,11 +312,11 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <ul>
 <li><code>Inorder traversal</code> visits nodes in <strong>Left → Root → Right</strong> order.</li>
 <li>While not typically used for key-based searches in a binary search tree, it can be helpful for operations requiring sorted order traversal.</li>
-<li>For a binary tree:  <pre class="line-numbers language-none"><code class="language-none">  A
+<li>For a binary tree:  <pre class="language-none"><code class="language-none">  A
  &#x2F; \
  B   C
 &#x2F; \
-D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+D   E</code></pre>
 </li>
 <li>Inorder Traversal: <code>D B E A C</code></li>
 </ul>
@@ -331,11 +332,11 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 </li>
 <li>
 <p>For a binary tree:</p>
-  <pre class="line-numbers language-none"><code class="language-none">    A
+  <pre class="language-none"><code class="language-none">    A
    &#x2F; \
   B   C
  &#x2F; \
-D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+D   E</code></pre>
 </li>
 <li>
 <p>Postorder Traversal: <code>D E B C A</code></p>
@@ -350,10 +351,10 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 </ol>
 </li>
 </ol>
-<h5 id="Use-Case-2-Insert">Use Case 2: Insert</h5>
+<h4 id="Use-Case-2-Insert">==Use Case 2: Insert==</h4>
 <p><code>insert_splaytree</code> function attempts to insert a new node with the given id, name, class, and record into the splay tree. If a node with the same id already exists, it prevents duplication.</p>
 <ol>
-<li>Search for an Existing Node<pre class="line-numbers language-c" data-language="c"><code class="language-c">current &#x3D; search_splaytree(tree, id, &quot;preorder&quot;);  &#x2F;&#x2F; Search for the node before insertion<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li>Search for an Existing Node<pre class="language-c" data-language="c"><code class="language-c">current &#x3D; search_splaytree(tree, id, &quot;preorder&quot;);  &#x2F;&#x2F; Search for the node before insertion</code></pre>
 </li>
 </ol>
 <ul>
@@ -362,8 +363,8 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <li>If a node is found (<code>current != NULL</code>), the function prevents duplicate insertion and exits early.</li>
 </ul>
 <ol start="2">
-<li>Create and Insert a New Node<pre class="line-numbers language-c" data-language="c"><code class="language-c">if (current &#x3D;&#x3D; NULL) &#123;
-    Node* newNode &#x3D; create_node(id, name, class, record); <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<li>Create and Insert a New Node<pre class="language-c" data-language="c"><code class="language-c">if (current &#x3D;&#x3D; NULL) &#123;
+    Node* newNode &#x3D; create_node(id, name, class, record); </code></pre>
 </li>
 </ol>
 <ul>
@@ -372,17 +373,17 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <ol>
 <li>Case 1: Tree is Empty</li>
 </ol>
- <pre class="line-numbers language-c" data-language="c"><code class="language-c">if (tree-&gt;root &#x3D;&#x3D; NULL) &#123;
+ <pre class="language-c" data-language="c"><code class="language-c">if (tree-&gt;root &#x3D;&#x3D; NULL) &#123;
    &#x2F;&#x2F; Tree is empty, new node becomes root
    tree-&gt;root &#x3D; newNode;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 </li>
 <li>
 <p>If the tree is empty (<code>tree-&gt;root == NULL</code>), the new node is set as the root of the tree.</p>
 <ol start="2">
 <li>Case 2: Tree is Non-Empty</li>
 </ol>
- <pre class="line-numbers language-c" data-language="c"><code class="language-c">else &#123;
+ <pre class="language-c" data-language="c"><code class="language-c">else &#123;
     &#x2F;&#x2F; Otherwise, find the parent node
     current &#x3D; tree-&gt;root;
     while (current !&#x3D; NULL) &#123;
@@ -400,7 +401,7 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
         parent-&gt;right &#x3D; newNode;
 
     newNode-&gt;parent &#x3D; parent;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 <ul>
 <li>
 <p><strong>Traverse the Tree</strong>:</p>
@@ -453,10 +454,10 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 </ol>
 </li>
 </ol>
-<h5 id="5-Use-case-3-Delete">5. Use case 3: Delete</h5>
+<h4 id="Use-case-3-Delete">==Use case 3: Delete==</h4>
 <p>The <code>delete_splaytree</code> function removes a node with the specified <code>key</code> from a <strong>splay tree</strong> while maintaining the tree’s structure and properties.</p>
 <ol>
-<li>Search for the Node to Delete<pre class="line-numbers language-c" data-language="c"><code class="language-c">Node* current &#x3D; search_splaytree(tree, key, &quot;preorder&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li>Search for the Node to Delete<pre class="language-c" data-language="c"><code class="language-c">Node* current &#x3D; search_splaytree(tree, key, &quot;preorder&quot;);</code></pre>
 </li>
 </ol>
 <ul>
@@ -464,7 +465,7 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <li>If the node is found (<code>current != NULL</code>), it proceeds with the deletion; otherwise, it prints an error message and exits.</li>
 </ul>
 <ol start="2">
-<li>Splay the Node to the Root<pre class="line-numbers language-c" data-language="c"><code class="language-c">splay(tree, current);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li>Splay the Node to the Root<pre class="language-c" data-language="c"><code class="language-c">splay(tree, current);</code></pre>
 </li>
 </ol>
 <ul>
@@ -475,17 +476,17 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <li>
 <p>Handle the Three Cases of Deletion</p>
 <ol>
-<li>Case 1: Node Has No Children<pre class="line-numbers language-c" data-language="c"><code class="language-c">if (current-&gt;left &#x3D;&#x3D; NULL &amp;&amp; current-&gt;right &#x3D;&#x3D; NULL) &#123;
+<li>Case 1: Node Has No Children<pre class="language-c" data-language="c"><code class="language-c">if (current-&gt;left &#x3D;&#x3D; NULL &amp;&amp; current-&gt;right &#x3D;&#x3D; NULL) &#123;
    tree-&gt;root &#x3D; NULL;
    free(current);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 </li>
 </ol>
 <ul>
 <li>If the node has no children, it is simply removed, and the root is set to <code>NULL</code>.</li>
 </ul>
 <ol start="2">
-<li>Case 2: Node Has One Child <pre class="line-numbers language-c" data-language="c"><code class="language-c">else if (current-&gt;left &#x3D;&#x3D; NULL || current-&gt;right &#x3D;&#x3D; NULL) &#123;
+<li>Case 2: Node Has One Child <pre class="language-c" data-language="c"><code class="language-c">else if (current-&gt;left &#x3D;&#x3D; NULL || current-&gt;right &#x3D;&#x3D; NULL) &#123;
     Node* child &#x3D; (current-&gt;left) ? current-&gt;left : current-&gt;right;
     if (current &#x3D;&#x3D; tree-&gt;root) &#123;
         tree-&gt;root &#x3D; child;
@@ -498,7 +499,7 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
         child-&gt;parent &#x3D; current-&gt;parent;
     &#125;
     free(current);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 </li>
 </ol>
 <ul>
@@ -511,7 +512,7 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 </li>
 </ul>
 <ol start="3">
-<li>Case 3: Node Has Two Children <pre class="line-numbers language-c" data-language="c"><code class="language-c">else &#123;
+<li>Case 3: Node Has Two Children <pre class="language-c" data-language="c"><code class="language-c">else &#123;
     Node* successor &#x3D; current-&gt;right;
     while (successor-&gt;left !&#x3D; NULL) &#123;
         successor &#x3D; successor-&gt;left;
@@ -534,7 +535,7 @@ D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
         child-&gt;parent &#x3D; successor-&gt;parent;
 
     free(successor);
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;</code></pre>
 </li>
 </ol>
 <ul>
@@ -595,7 +596,7 @@ Algorithm: Flowchart for each module</p>
     end
     H--insert--> I
     H--delete--> J</pre>
-<h3 id="How-Splay-Trees-Algorithm-Work"><strong>How Splay Trees Algorithm Work</strong></h3>
+<h4 id="How-Splay-Trees-Algorithm-Work">==How Splay Trees Algorithm Work==</h4>
 <p>A <strong>splay tree</strong> is a self-adjusting binary search tree that brings the most recently accessed node to the root through a process called <strong>splaying</strong>.</p>
 <p>This adjustment improves the efficiency of subsequent operations on the same or nearby elements.</p>
 <p>There is several key properties for splay tree algorithm:</p>
@@ -625,30 +626,22 @@ Algorithm: Flowchart for each module</p>
 </ul>
 </li>
 </ol>
-<h4 id="1-Basic-Operations"><strong>1. Basic Operations</strong></h4>
+<h4 id="Basic-Operations">==Basic Operations==</h4>
 <p>The basic operations of a splay tree are:</p>
 <ul>
 <li><strong>Search</strong>: Find a node by key and bring it to the root.</li>
 <li><strong>Insert</strong>: Add a new node to the tree and splay it to the root.</li>
 <li><strong>Delete</strong>: Remove a node and reorganize the tree such that it remains valid, splaying the predecessor or successor of the deleted node to the root.</li>
 </ul>
-<h4 id="2-The-Splay-Operation"><strong>2. The Splay Operation</strong></h4>
+<h4 id="Splay-Tree-Rotation-Cases">==Splay Tree Rotation Cases==</h4>
 <p>The <strong>splay operation</strong> is the core of splay trees. It rearranges the tree to bring a specified node (<code>x</code>) to the root using rotations. Splaying ensures that nodes accessed recently or frequently are near the root, optimizing access times.</p>
 <p>The splay operation has different rotation cases that works by repeatedly applying one of the following rotations until the target node becomes the root.</p>
-<h3 id="Splay-Tree-Rotation-Cases"><strong>Splay Tree Rotation Cases</strong></h3>
 <p>The splay operation adjusts the tree structure by repeatedly performing rotations to bring a target node (<code>x</code>) to the root. These rotations ensure that frequently accessed nodes are closer to the root, improving future operation efficiency. Below are detailed explanations of the six possible rotation cases:</p>
-<p><strong>1. Zig (Single Right Rotation)</strong></p>
-<p><strong>When?</strong></p>
+<h5 id="1-Zig-Single-Right-Rotation">1. Zig (Single Right Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the left child of its parent (<code>p</code>), and the parent has no grandparent (it is the root).</li>
 </ul>
-<p><strong>Action:</strong></p>
-<ul>
-<li>Perform a single right rotation on the parent (<code>p</code>).</li>
-<li>This makes the target node (<code>x</code>) the new root.</li>
-</ul>
-<p><strong>Diagram:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">Before Zig:
+<pre class="language-none"><code class="language-none">Before Zig:
       p
      &#x2F;
     x
@@ -656,24 +649,18 @@ Algorithm: Flowchart for each module</p>
 After Zig:
     x
      \
-      p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>Effect:</strong></p>
+      p</code></pre>
 <ul>
+<li>Perform a single right rotation on the parent (<code>p</code>).</li>
+<li>This makes the target node (<code>x</code>) the new root.</li>
 <li>The height of the subtree decreases.</li>
 <li>Used to splay nodes closer to the root in single-level trees.</li>
 </ul>
-<p><strong>2. Zag (Single Left Rotation)</strong></p>
-<p><strong>When?</strong></p>
+<h5 id="2-Zag-Single-Left-Rotation">2. Zag (Single Left Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the right child of its parent (<code>p</code>), and the parent has no grandparent (it is the root).</li>
 </ul>
-<p><strong>Action:</strong></p>
-<ul>
-<li>Perform a single left rotation on the parent (<code>p</code>).</li>
-<li>This makes the target node (<code>x</code>) the new root.</li>
-</ul>
-<p><strong>Diagram:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">Before Zag:
+<pre class="language-none"><code class="language-none">Before Zag:
     p
      \
       x
@@ -681,23 +668,17 @@ After Zig:
 After Zag:
       x
      &#x2F;
-    p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>Effect:</strong></p>
+    p</code></pre>
 <ul>
+<li>Perform a single left rotation on the parent (<code>p</code>).</li>
+<li>This makes the target node (<code>x</code>) the new root.</li>
 <li>Similar to Zig, the subtree height decreases, and <code>x</code> becomes the root.</li>
 </ul>
-<p><strong>3. Zig-Zig (Double Right Rotation)</strong></p>
-<p><strong>When?</strong></p>
+<h5 id="3-Zig-Zig-Double-Right-Rotation">3. Zig-Zig (Double Right Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the left child of its parent (<code>p</code>), and the parent is also the left child of its grandparent (<code>g</code>).</li>
 </ul>
-<p><strong>Action:</strong></p>
-<ol>
-<li>Perform a right rotation on the grandparent (<code>g</code>).</li>
-<li>Perform another right rotation on the parent (<code>p</code>).</li>
-</ol>
-<p><strong>Diagram:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">Before Zig-Zig:
+<pre class="language-none"><code class="language-none">Before Zig-Zig:
         g
        &#x2F;
       p
@@ -709,24 +690,18 @@ After Zig-Zig:
      \
       p
        \
-        g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>Effect:</strong></p>
+        g</code></pre>
 <ul>
+<li>Perform a right rotation on the grandparent (<code>g</code>).</li>
+<li>Perform another right rotation on the parent (<code>p</code>).</li>
 <li><code>x</code> is moved two levels closer to the root.</li>
 <li>Reduces the height of the left-heavy subtree efficiently.</li>
 </ul>
-<p><strong>4. Zag-Zag (Double Left Rotation)</strong></p>
-<p><strong>When?</strong></p>
+<h5 id="4-Zag-Zag-Double-Left-Rotation">4. Zag-Zag (Double Left Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the right child of its parent (<code>p</code>), and the parent is also the right child of its grandparent (<code>g</code>).</li>
 </ul>
-<p><strong>Action:</strong></p>
-<ol>
-<li>Perform a left rotation on the grandparent (<code>g</code>).</li>
-<li>Perform another left rotation on the parent (<code>p</code>).</li>
-</ol>
-<p><strong>Diagram:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">Before Zag-Zag:
+<pre class="language-none"><code class="language-none">Before Zag-Zag:
     g
      \
       p
@@ -738,24 +713,18 @@ After Zag-Zag:
        &#x2F;
       p
      &#x2F;
-    g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>Effect:</strong></p>
+    g</code></pre>
 <ul>
+<li>Perform a left rotation on the grandparent (<code>g</code>).</li>
+<li>Perform another left rotation on the parent (<code>p</code>).</li>
 <li><code>x</code> is moved two levels closer to the root.</li>
 <li>Balances right-heavy subtrees efficiently.</li>
 </ul>
-<p><strong>5. Zig-Zag (Right Rotation Followed by Left Rotation)</strong></p>
-<p><strong>When?</strong></p>
+<h5 id="5-Zig-Zag-Right-Rotation-Followed-by-Left-Rotation">5. Zig-Zag (Right Rotation Followed by Left Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the left child of its parent (<code>p</code>), and the parent is the right child of its grandparent (<code>g</code>).</li>
 </ul>
-<p><strong>Action:</strong></p>
-<ol>
-<li>Perform a right rotation on the parent (<code>p</code>).</li>
-<li>Perform a left rotation on the grandparent (<code>g</code>).</li>
-</ol>
-<p><strong>Diagram:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">Before Zig-Zag:
+<pre class="language-none"><code class="language-none">Before Zig-Zag:
         g
          \
           p
@@ -765,24 +734,18 @@ After Zag-Zag:
 After Zig-Zag:
         x
        &#x2F; \
-      g   p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>Effect:</strong></p>
+      g   p</code></pre>
 <ul>
+<li>Perform a right rotation on the parent (<code>p</code>).</li>
+<li>Perform a left rotation on the grandparent (<code>g</code>).</li>
 <li><code>x</code> is moved two levels closer to the root.</li>
 <li>Resolves imbalances caused by a “cross” relationship between parent and grandparent.</li>
 </ul>
-<p><strong>6. Zag-Zig (Left Rotation Followed by Right Rotation)</strong></p>
-<p><strong>When?</strong></p>
+<h5 id="6-Zag-Zig-Left-Rotation-Followed-by-Right-Rotation">6. Zag-Zig (Left Rotation Followed by Right Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the right child of its parent (<code>p</code>), and the parent is the left child of its grandparent (<code>g</code>).</li>
 </ul>
-<p><strong>Action:</strong></p>
-<ol>
-<li>Perform a left rotation on the parent (<code>p</code>).</li>
-<li>Perform a right rotation on the grandparent (<code>g</code>).</li>
-</ol>
-<p><strong>Diagram:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">Before Zag-Zig:
+<pre class="language-none"><code class="language-none">Before Zag-Zig:
         g
        &#x2F;
       p
@@ -792,9 +755,10 @@ After Zig-Zag:
 After Zag-Zig:
         x
        &#x2F; \
-      p   g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>Effect:</strong></p>
+      p   g</code></pre>
 <ul>
+<li>Perform a left rotation on the parent (<code>p</code>).</li>
+<li>Perform a right rotation on the grandparent (<code>g</code>).</li>
 <li>Similar to Zig-Zag, <code>x</code> is moved two levels closer to the root, resolving cross-relationship imbalances.</li>
 </ul>
 <p><strong>Summary of Rotations</strong></p>
@@ -847,11 +811,11 @@ After Zag-Zig:
 <p>Each rotation rebalances the tree while ensuring the target node moves closer to the root, maintaining efficient access patterns. Let me know if you’d like further clarification!</p>
 <h5 id="Example-of-How-Splay-Tree-Works"><strong>Example of How Splay Tree Works</strong></h5>
 <h5 id="Initial-Tree">Initial Tree:</h5>
-<pre class="line-numbers language-none"><code class="language-none">    50
+<pre class="language-none"><code class="language-none">    50
    &#x2F;  \
  30    70
  &#x2F; \
-20  40<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+20  40</code></pre>
 <h5 id="Search-for-Node-20"><strong>Search for Node 20:</strong></h5>
 <ol>
 <li>
@@ -868,14 +832,14 @@ After Zag-Zig:
 </li>
 </ol>
 <h5 id="Final-Tree">Final Tree:</h5>
-<pre class="line-numbers language-none"><code class="language-none">20
+<pre class="language-none"><code class="language-none">20
   \
    30
      \
       50
      &#x2F;  \
-   40    70<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="Advantages-of-Splay-Trees"><strong>Advantages of Splay Trees</strong></h5>
+   40    70</code></pre>
+<h4 id="Advantages-of-Splay-Trees">==Advantages of Splay Trees==</h4>
 <ol>
 <li><strong>Simple to Implement</strong>:
 <ul>
@@ -893,7 +857,7 @@ After Zag-Zig:
 </ul>
 </li>
 </ol>
-<h5 id="Limitations-of-Splay-Trees"><strong>Limitations of Splay Trees</strong></h5>
+<h4 id="Limitations-of-Splay-Trees">==Limitations of Splay Trees==</h4>
 <ol>
 <li><strong>Poor Worst-Case Performance</strong>:
 <ul>
@@ -911,7 +875,7 @@ After Zag-Zig:
 </ul>
 </li>
 </ol>
-<h5 id="Applications-of-Splay-Trees"><strong>Applications of Splay Trees</strong></h5>
+<h4 id="Applications-of-Splay-Trees">==Applications of Splay Trees==</h4>
 <ol>
 <li><strong>Caching and Memory Management</strong>:
 <ul>
@@ -929,12 +893,6 @@ After Zag-Zig:
 </ul>
 </li>
 </ol>
-<h5 id="Why-Use-a-Splay-Tree"><strong>Why Use a Splay Tree?</strong></h5>
-<p>Splay trees are an excellent choice when:</p>
-<ul>
-<li>Access patterns are non-uniform (some elements are accessed more frequently).</li>
-<li>You need a simple, self-adjusting data structure without the complexity of maintaining balance explicitly.</li>
-</ul>
 <hr>
 <h2 id="Part-3-System-Prototype">Part 3: System Prototype</h2>
 <p>In this section, given the description of the system prototype. Provide the interface for each module</p>
@@ -1019,6 +977,6 @@ After Zag-Zig:
 
 
 
-	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
