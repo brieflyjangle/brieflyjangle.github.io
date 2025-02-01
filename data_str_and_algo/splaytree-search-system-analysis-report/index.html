@@ -67,8 +67,8 @@
 	
 	
 
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
 	<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header">
@@ -805,7 +805,7 @@ After Zag-Zig:
 </tr>
 </tbody>
 </table>
-<p>Each rotation rebalances the tree while ensuring the target node moves closer to the root, maintaining efficient access patterns. Let me know if you’d like further clarification!</p>
+<p>Each rotation rebalances the tree while ensuring the target node moves closer to the root, maintaining efficient access patterns.</p>
 <h4 id="4-Example-of-How-Splay-Tree-Works">==4. Example of How Splay Tree Works==</h4>
 <h5 id="Initial-Tree">Initial Tree:</h5>
 <pre class="language-none"><code class="language-none">    50
@@ -814,20 +814,14 @@ After Zag-Zig:
  &#x2F; \
 20  40</code></pre>
 <h5 id="Search-for-Node-20"><strong>Search for Node 20:</strong></h5>
-<ol>
-<li>
 <p><strong>Locate Node 20</strong>:</p>
 <ul>
 <li>Traverse the tree: 50 → 30 → 20.</li>
 </ul>
-</li>
-<li>
 <p><strong>Splay Node 20 to Root</strong>:</p>
 <ul>
-<li><strong>Step 1 (Zig-Zig)</strong>: Rotate 30 with 50, then 20 with 30.</li>
+<li>Step 1 (Zig-Zig): Rotate 30 with 50, then 20 with 30.</li>
 </ul>
-</li>
-</ol>
 <h5 id="Final-Tree">Final Tree:</h5>
 <pre class="language-none"><code class="language-none">20
   \
@@ -837,59 +831,17 @@ After Zag-Zig:
      &#x2F;  \
    40    70</code></pre>
 <h4 id="5-Advantages-of-Splay-Trees">==5. Advantages of Splay Trees==</h4>
-<ol>
-<li><strong>Simple to Implement</strong>:
-<ul>
-<li>No need for height or color maintenance (unlike AVL or Red-Black Trees).</li>
-</ul>
-</li>
-<li><strong>Adaptive Performance</strong>:
-<ul>
-<li>Frequently accessed nodes are closer to the root, improving efficiency.</li>
-</ul>
-</li>
-<li><strong>Efficient Amortized Time Complexity</strong>:
-<ul>
-<li>All operations (search, insert, delete) have an <strong>amortized cost</strong> of (O(\log n)).</li>
-</ul>
-</li>
-</ol>
+<p><strong>Simple to Implement</strong>: No need for height or color maintenance (unlike AVL or Red-Black Trees).<br>
+<strong>Adaptive Performance</strong>: Frequently accessed nodes are closer to the root, improving efficiency.<br>
+<strong>Efficient Amortized Time Complexity</strong>: All operations (search, insert, delete) have an <strong>amortized cost</strong> of (O(\log n)).</p>
 <h4 id="6-Limitations-of-Splay-Trees">==6. Limitations of Splay Trees==</h4>
-<ol>
-<li><strong>Poor Worst-Case Performance</strong>:
-<ul>
-<li>Individual operations can take (O(n)) time in degenerate cases (e.g., when the tree becomes unbalanced).</li>
-</ul>
-</li>
-<li><strong>No Guarantees for Balanced Trees</strong>:
-<ul>
-<li>Unlike AVL or Red-Black Trees, splay trees do not ensure a balanced structure at all times.</li>
-</ul>
-</li>
-<li><strong>Not Optimal for Static Datasets</strong>:
-<ul>
-<li>If access patterns are not skewed (i.e., no frequently accessed nodes), other self-balancing trees may perform better.</li>
-</ul>
-</li>
-</ol>
+<p><strong>Poor Worst-Case Performance</strong>: Individual operations can take (O(n)) time in degenerate cases (e.g., when the tree becomes unbalanced).<br>
+<strong>No Guarantees for Balanced Trees</strong>: Unlike AVL or Red-Black Trees, splay trees do not ensure a balanced structure at all times.<br>
+<strong>Not Optimal for Static Datasets</strong>: If access patterns are not skewed (i.e., no frequently accessed nodes), other self-balancing trees may perform better.</p>
 <h4 id="7-Applications-of-Splay-Trees">==7. Applications of Splay Trees==</h4>
-<ol>
-<li><strong>Caching and Memory Management</strong>:
-<ul>
-<li>Frequently accessed data is brought closer to the root for fast retrieval.</li>
-</ul>
-</li>
-<li><strong>String Matching</strong>:
-<ul>
-<li>Efficient implementation of operations on substrings (used in data compression).</li>
-</ul>
-</li>
-<li><strong>Dynamic Sets</strong>:
-<ul>
-<li>Useful in scenarios where access patterns are skewed and frequently accessed elements dominate.</li>
-</ul>
-</li>
-</ol>
+<p><strong>Caching and Memory Management</strong>: Frequently accessed data is brought closer to the root for fast retrieval.<br>
+<strong>String Matching</strong>: Efficient implementation of operations on substrings (used in data compression).<br>
+<strong>Dynamic Sets</strong>: Useful in scenarios where access patterns are skewed and frequently accessed elements dominate.</p>
 <hr>
 <h2 id="Part-3-System-Prototype">Part 3: System Prototype</h2>
 <p>In this section, given the description of the system prototype. Provide the interface for each module</p>
