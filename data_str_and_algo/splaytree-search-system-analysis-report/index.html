@@ -67,8 +67,8 @@
 	
 	
 
-<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
 	<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header">
@@ -593,11 +593,11 @@ Algorithm: Flowchart for each module</p>
     end
     H--insert--> I
     H--delete--> J</pre>
-<h4 id="How-Splay-Trees-Algorithm-Work">==How Splay Trees Algorithm Work==</h4>
+<h4 id="1-How-Splay-Trees-Algorithm-Work">==1. How Splay Trees Algorithm Work==</h4>
 <p>A <strong>splay tree</strong> is a self-adjusting binary search tree that brings the most recently accessed node to the root through a process called <strong>splaying</strong>.</p>
 <p>This adjustment improves the efficiency of subsequent operations on the same or nearby elements.</p>
 <p>There is several key properties for splay tree algorithm:</p>
-<ol>
+<ul>
 <li>
 <p><strong>Self-Adjusting</strong>:</p>
 <ul>
@@ -622,19 +622,19 @@ Algorithm: Flowchart for each module</p>
 <li>Although a single operation may take (O(n)) time in the worst case, the <strong>amortized cost</strong> of operations (over a sequence of operations) is (O(\log n)).</li>
 </ul>
 </li>
-</ol>
-<h4 id="Basic-Operations">==Basic Operations==</h4>
+</ul>
+<h4 id="2-Basic-Operations">==2. Basic Operations==</h4>
 <p>The basic operations of a splay tree are:</p>
 <ul>
 <li><strong>Search</strong>: Find a node by key and bring it to the root.</li>
 <li><strong>Insert</strong>: Add a new node to the tree and splay it to the root.</li>
 <li><strong>Delete</strong>: Remove a node and reorganize the tree such that it remains valid, splaying the predecessor or successor of the deleted node to the root.</li>
 </ul>
-<h4 id="Splay-Tree-Rotation-Cases">==Splay Tree Rotation Cases==</h4>
+<h4 id="3-Splay-Tree-Rotation-Cases">==3. Splay Tree Rotation Cases==</h4>
 <p>The <strong>splay operation</strong> is the core of splay trees. It rearranges the tree to bring a specified node (<code>x</code>) to the root using rotations. Splaying ensures that nodes accessed recently or frequently are near the root, optimizing access times.</p>
 <p>The splay operation has different rotation cases that works by repeatedly applying one of the following rotations until the target node becomes the root.</p>
 <p>The splay operation adjusts the tree structure by repeatedly performing rotations to bring a target node (<code>x</code>) to the root. These rotations ensure that frequently accessed nodes are closer to the root, improving future operation efficiency. Below are detailed explanations of the six possible rotation cases:</p>
-<h5 id="1-Zig-Single-Right-Rotation">1. Zig (Single Right Rotation)</h5>
+<h5 id="a-Zig-Single-Right-Rotation">a. Zig (Single Right Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the left child of its parent (<code>p</code>), and the parent has no grandparent (it is the root).</li>
 </ul>
@@ -653,7 +653,7 @@ After Zig:
 <li>The height of the subtree decreases.</li>
 <li>Used to splay nodes closer to the root in single-level trees.</li>
 </ul>
-<h5 id="2-Zag-Single-Left-Rotation">2. Zag (Single Left Rotation)</h5>
+<h5 id="b-Zag-Single-Left-Rotation">b. Zag (Single Left Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the right child of its parent (<code>p</code>), and the parent has no grandparent (it is the root).</li>
 </ul>
@@ -671,7 +671,7 @@ After Zag:
 <li>This makes the target node (<code>x</code>) the new root.</li>
 <li>Similar to Zig, the subtree height decreases, and <code>x</code> becomes the root.</li>
 </ul>
-<h5 id="3-Zig-Zig-Double-Right-Rotation">3. Zig-Zig (Double Right Rotation)</h5>
+<h5 id="c-Zig-Zig-Double-Right-Rotation">c. Zig-Zig (Double Right Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the left child of its parent (<code>p</code>), and the parent is also the left child of its grandparent (<code>g</code>).</li>
 </ul>
@@ -694,7 +694,7 @@ After Zig-Zig:
 <li><code>x</code> is moved two levels closer to the root.</li>
 <li>Reduces the height of the left-heavy subtree efficiently.</li>
 </ul>
-<h5 id="4-Zag-Zag-Double-Left-Rotation">4. Zag-Zag (Double Left Rotation)</h5>
+<h5 id="d-Zag-Zag-Double-Left-Rotation">d. Zag-Zag (Double Left Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the right child of its parent (<code>p</code>), and the parent is also the right child of its grandparent (<code>g</code>).</li>
 </ul>
@@ -717,7 +717,7 @@ After Zag-Zag:
 <li><code>x</code> is moved two levels closer to the root.</li>
 <li>Balances right-heavy subtrees efficiently.</li>
 </ul>
-<h5 id="5-Zig-Zag-Right-Rotation-Followed-by-Left-Rotation">5. Zig-Zag (Right Rotation Followed by Left Rotation)</h5>
+<h5 id="e-Zig-Zag-Right-Rotation-Followed-by-Left-Rotation">e. Zig-Zag (Right Rotation Followed by Left Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the left child of its parent (<code>p</code>), and the parent is the right child of its grandparent (<code>g</code>).</li>
 </ul>
@@ -738,7 +738,7 @@ After Zig-Zag:
 <li><code>x</code> is moved two levels closer to the root.</li>
 <li>Resolves imbalances caused by a “cross” relationship between parent and grandparent.</li>
 </ul>
-<h5 id="6-Zag-Zig-Left-Rotation-Followed-by-Right-Rotation">6. Zag-Zig (Left Rotation Followed by Right Rotation)</h5>
+<h5 id="f-Zag-Zig-Left-Rotation-Followed-by-Right-Rotation">f. Zag-Zig (Left Rotation Followed by Right Rotation)</h5>
 <ul>
 <li>The target node (<code>x</code>) is the right child of its parent (<code>p</code>), and the parent is the left child of its grandparent (<code>g</code>).</li>
 </ul>
