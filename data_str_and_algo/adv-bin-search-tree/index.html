@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		adv_bin_search_tree | 
+	 
+	Huiwen Learning Notes
+	</title>
+	
+	<!-- keywords,description -->
+	
+	
+
+	<!-- favicon -->
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+
+	
+	
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Huiwen Learning Notes</a>
+
+	<ul id="menu">
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										computer_arch
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/computer_arch/Chap1-fundamental-quantitative-design-n-analysis/">
+                     
+										    Chap1-fundamental-quantitative-design-n-analysis
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										data_str_and_algo
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/data_str_and_algo/adv-bin-search-tree/">
+                     
+										    adv-bin-search-tree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/bin_search_tree/">
+                     
+										    bin_search_tree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/splaytree-search-system-analysis-report/">
+                     
+										    splaytree-search-system-analysis-report
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/stack/">
+                     
+										    stack
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										other
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/other/how-to-start-personal-blog/">
+                     
+										    how-to-start-personal-blog
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	adv_bin_search_tree
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>HuiWen</span>
+	<span>2025-01-30 16:19:41</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h3 id="Definitions-of-Advanced-Trees-in-Computer-Science"><strong>Definitions of Advanced Trees in Computer Science</strong></h3>
+<p>Advanced trees are specialized tree structures designed to optimize search, insertion, and deletion operations while maintaining efficiency. Here are the key types of advanced trees:</p>
+<hr>
+<h3 id="1-AVL-Tree"><strong>1. AVL Tree</strong></h3>
+<p><strong>Definition</strong>:<br>
+An <strong>AVL tree</strong> is a <strong>self-balancing binary search tree (BST)</strong> where the height difference (<strong>balance factor</strong>) between the left and right subtrees of any node is at most <strong>1</strong>.</p>
+<p><strong>Key Properties</strong>:</p>
+<ul>
+<li>Each node has a <strong>balance factor</strong>: ( \text{height(left)} - \text{height(right)} ).</li>
+<li>If the balance factor is outside the range <strong>[-1, 1]</strong>, <strong>rotations</strong> (single or double) are applied to balance the tree.</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Efficient searching when insertions and deletions occur frequently.</li>
+<li>Used in database indexing and memory management.</li>
+</ul>
+<hr>
+<h3 id="2-Red-Black-Tree"><strong>2. Red-Black Tree</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>Red-Black Tree</strong> is a <strong>self-balancing BST</strong> where each node follows <strong>coloring rules</strong> (Red or Black) to maintain balance.</p>
+<p><strong>Key Properties</strong>:</p>
+<ul>
+<li>Every node is either <strong>red or black</strong>.</li>
+<li>The <strong>root node is always black</strong>.</li>
+<li>A <strong>red node cannot have a red child</strong>.</li>
+<li>Every path from a node to its descendant NULL pointers must have the <strong>same number of black nodes</strong>.</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Used in <strong>standard libraries</strong> (e.g., <code>std::map</code> and <code>std::set</code> in C++).</li>
+<li>Efficient for <strong>dynamic memory allocation</strong>.</li>
+</ul>
+<hr>
+<h3 id="3-Splay-Tree"><strong>3. Splay Tree</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>Splay Tree</strong> is a <strong>self-adjusting BST</strong> that moves the most recently accessed node to the <strong>root</strong> using <strong>rotations</strong> (Zig, Zig-Zig, Zig-Zag).</p>
+<p><strong>Key Properties</strong>:</p>
+<ul>
+<li>Frequently accessed elements move closer to the <strong>root</strong>, reducing future access time.</li>
+<li><strong>Worst-case complexity</strong>: ( O(n) ), but <strong>amortized complexity</strong>: ( O(\log n) ).</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Caches</strong> (recently accessed items remain at the top).</li>
+<li><strong>Network routers</strong> (frequently used routing paths are optimized).</li>
+</ul>
+<hr>
+<h3 id="4-Treap-Tree-Heap"><strong>4. Treap (Tree + Heap)</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>Treap</strong> is a randomized BST that follows both <strong>BST properties</strong> and <strong>Heap properties</strong>.</p>
+<ul>
+<li>Each node has <strong>two values</strong>: a <strong>key</strong> (BST property) and a <strong>priority</strong> (Heap property).</li>
+<li>Nodes are inserted like in a BST, but rotations are performed based on <strong>priority</strong>.</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>Randomized priority queue operations.</li>
+<li>Balancing <strong>search trees</strong> dynamically.</li>
+</ul>
+<hr>
+<h3 id="5-Scapegoat-Tree"><strong>5. Scapegoat Tree</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>Scapegoat Tree</strong> is a <strong>self-balancing BST</strong> that maintains balance <strong>probabilistically</strong> instead of enforcing strict rules.</p>
+<p><strong>Key Properties</strong>:</p>
+<ul>
+<li>Ensures that the tree remains <strong>balanced</strong> within a certain threshold.</li>
+<li>Periodic <strong>rebuilding</strong> occurs when imbalances are detected.</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li>When <strong>strict balancing</strong> is not needed but <strong>performance improvement</strong> is desirable.</li>
+</ul>
+<hr>
+<h3 id="6-B-Tree"><strong>6. B-Tree</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>B-Tree</strong> is a <strong>self-balancing multi-way search tree</strong> where each node can have <strong>multiple children</strong>.</p>
+<p><strong>Key Properties</strong>:</p>
+<ul>
+<li>Nodes have <strong>multiple keys</strong>.</li>
+<li>Keeps <strong>data sorted</strong> for efficient search.</li>
+<li>Used in <strong>database indexing</strong> and <strong>file systems</strong>.</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Database storage engines</strong> (MySQL, PostgreSQL).</li>
+<li><strong>File systems</strong> (NTFS, ext4).</li>
+</ul>
+<hr>
+<h3 id="7-B-Tree"><strong>7. B+ Tree</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>B+ Tree</strong> is an extension of <strong>B-Tree</strong>, where:</p>
+<ul>
+<li><strong>All keys are stored in leaf nodes</strong>.</li>
+<li>Internal nodes only store pointers to guide searches.</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Database indexing</strong> (optimized for range queries).</li>
+<li><strong>File indexing systems</strong>.</li>
+</ul>
+<hr>
+<h3 id="8-Trie-Prefix-Tree"><strong>8. Trie (Prefix Tree)</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>Trie</strong> is a <strong>tree data structure</strong> where:</p>
+<ul>
+<li>Each node represents a <strong>character</strong>.</li>
+<li>Words are stored by linking characters in sequence.</li>
+</ul>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Autocomplete suggestions</strong> (Google Search, text editors).</li>
+<li><strong>Spell checkers</strong>.</li>
+</ul>
+<hr>
+<h3 id="9-Patricia-Tree-Compressed-Trie"><strong>9. Patricia Tree (Compressed Trie)</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>Patricia Tree</strong> is an <strong>optimized Trie</strong> that compresses nodes with a <strong>single child</strong> into one.</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Network routing tables</strong>.</li>
+<li><strong>Genome sequence searching</strong>.</li>
+</ul>
+<hr>
+<h3 id="10-Radix-Tree"><strong>10. Radix Tree</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>Radix Tree</strong> is a <strong>compressed prefix tree</strong> that optimizes storage and lookup efficiency.</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Fast IP lookups</strong> in networking.</li>
+<li><strong>Domain name searches</strong>.</li>
+</ul>
+<hr>
+<h3 id="11-Suffix-Tree"><strong>11. Suffix Tree</strong></h3>
+<p><strong>Definition</strong>:<br>
+A <strong>Suffix Tree</strong> is a specialized Trie used for <strong>string matching</strong>.</p>
+<p><strong>Use Cases</strong>:</p>
+<ul>
+<li><strong>Bioinformatics</strong> (DNA sequence analysis).</li>
+<li><strong>Text processing</strong>.</li>
+</ul>
+<hr>
+<h3 id="Comparison-Table"><strong>Comparison Table</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Tree Type</th>
+<th>Balancing Mechanism</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AVL Tree</strong></td>
+<td>Strict height balancing</td>
+<td>General searching</td>
+</tr>
+<tr>
+<td><strong>Red-Black Tree</strong></td>
+<td>Color rules</td>
+<td>Used in <code>std::map</code>, OS kernels</td>
+</tr>
+<tr>
+<td><strong>Splay Tree</strong></td>
+<td>Move frequently accessed nodes to root</td>
+<td>Caches, Network routers</td>
+</tr>
+<tr>
+<td><strong>Treap</strong></td>
+<td>Random priority balancing</td>
+<td>Dynamic search trees</td>
+</tr>
+<tr>
+<td><strong>Scapegoat Tree</strong></td>
+<td>Rebuilds when needed</td>
+<td>Probabilistic balancing</td>
+</tr>
+<tr>
+<td><strong>B-Tree</strong></td>
+<td>Multi-way balanced tree</td>
+<td>Databases, file systems</td>
+</tr>
+<tr>
+<td><strong>B+ Tree</strong></td>
+<td>Data only in leaf nodes</td>
+<td>Range queries, indexing</td>
+</tr>
+<tr>
+<td><strong>Trie</strong></td>
+<td>Character-based search</td>
+<td>Autocomplete, spell checkers</td>
+</tr>
+<tr>
+<td><strong>Radix Tree</strong></td>
+<td>Compressed Trie</td>
+<td>IP routing</td>
+</tr>
+<tr>
+<td><strong>Suffix Tree</strong></td>
+<td>Fast string searches</td>
+<td>Text processing</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Conclusion"><strong>Conclusion</strong></h3>
+<p>These advanced trees <strong>improve efficiency</strong> in searching, inserting, and deleting elements based on different <strong>use cases</strong>.</p>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/data_str_and_algo/splaytree-search-system-analysis-report/">
+                splaytree_search_system_analysis_report
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©<span id="footerYear-start"></span>-<span id="footerYear-end"></span>
+
+	
+	    <a href="/">HuiWen</a>
+	
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//wujun.me" target="_blank">Wu Jun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+<script type="text/javascript">
+	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+</script>
+
+<script type="text/javascript">
+	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+</script>
+
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+
+
+
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

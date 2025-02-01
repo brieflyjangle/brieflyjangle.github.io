@@ -127,10 +127,21 @@
 									</a>
 									
 							<ul>
-								<li class="file active">
-									<a href="/data_str_and_algo/binary_search_tree/">
+								<li class="file">
+									<a href="/data_str_and_algo/adv-bin-search-tree/">
                      
-										    binary_search_tree
+										    adv-bin-search-tree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/data_str_and_algo/bin_search_tree/">
+                     
+										    bin_search_tree
                      
 									</a>
 								</li>
@@ -227,7 +238,124 @@
 
 <!-- content -->
 <div id="article-content">
-	<p>Traversing Binary Tree</p>
+	<h3 id="Definitions-for-Search-Insert-and-Delete-in-a-Binary-Search-Tree-BST"><strong>Definitions for Search, Insert, and Delete in a Binary Search Tree (BST)</strong></h3>
+<h4 id="1-Search-in-a-BST"><strong>1. Search in a BST</strong></h4>
+<p><strong>Definition</strong>: Searching in a BST follows the binary search principle:</p>
+<ul>
+<li>Start from the <strong>root</strong>.</li>
+<li>Compare the target value with the current node:
+<ul>
+<li>If it <strong>matches</strong>, return the node.</li>
+<li>If it is <strong>smaller</strong>, move to the <strong>left subtree</strong>.</li>
+<li>If it is <strong>greater</strong>, move to the <strong>right subtree</strong>.</li>
+</ul>
+</li>
+<li>Repeat until the node is found or reach a leaf (NULL).</li>
+</ul>
+<p><strong>Time Complexity</strong>:</p>
+<ul>
+<li><strong>Balanced BST</strong>: (O(\log n))</li>
+<li><strong>Unbalanced BST</strong>: (O(n)) (worst case)</li>
+</ul>
+<p>🔹 <strong>Example</strong>: Searching for 40 in this BST:</p>
+<pre class="line-numbers language-none"><code class="language-none">     50
+    &#x2F;  \
+  30    70
+ &#x2F;  \   &#x2F;  \
+20  40 60  80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Start at 50 → 40 is smaller → move left.</li>
+<li>At 30 → 40 is greater → move right.</li>
+<li>Found <strong>40</strong>! ✅</li>
+</ul>
+<hr>
+<h4 id="2-Insert-in-a-BST"><strong>2. Insert in a BST</strong></h4>
+<p><strong>Definition</strong>: Insertion follows these rules:</p>
+<ul>
+<li>Start from the <strong>root</strong> and find the correct position using the <strong>BST properties</strong>.</li>
+<li>If the new value is <strong>smaller</strong>, move left; if <strong>greater</strong>, move right.</li>
+<li>Insert the new node at the correct position as a <strong>leaf node</strong>.</li>
+</ul>
+<p><strong>Time Complexity</strong>:</p>
+<ul>
+<li><strong>Balanced BST</strong>: (O(\log n))</li>
+<li><strong>Unbalanced BST</strong>: (O(n))</li>
+</ul>
+<p>🔹 <strong>Example</strong>: Inserting <strong>25</strong> in the BST:</p>
+<pre class="line-numbers language-none"><code class="language-none">     50
+    &#x2F;  \
+  30    70
+ &#x2F;  \   &#x2F;  \
+20  40 60  80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Start at 50 → 25 is smaller → move left.</li>
+<li>At 30 → 25 is smaller → move left.</li>
+<li>At 20 → 25 is greater → insert <strong>25 as right child of 20</strong>. ✅</li>
+</ul>
+<hr>
+<h4 id="3-Delete-in-a-BST"><strong>3. Delete in a BST</strong></h4>
+<p><strong>Definition</strong>: Deleting a node in BST has <strong>three cases</strong>:</p>
+<ol>
+<li><strong>Node has no children (Leaf Node)</strong>: Simply <strong>remove</strong> it.</li>
+<li><strong>Node has one child</strong>: Remove the node and <strong>replace</strong> it with its child.</li>
+<li><strong>Node has two children</strong>:
+<ul>
+<li>Find the <strong>inorder successor</strong> (smallest node in the right subtree).</li>
+<li>Replace the node with the inorder successor.</li>
+<li>Delete the inorder successor.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Time Complexity</strong>:</p>
+<ul>
+<li><strong>Balanced BST</strong>: (O(\log n))</li>
+<li><strong>Unbalanced BST</strong>: (O(n))</li>
+</ul>
+<p>🔹 <strong>Example</strong>: Deleting <strong>30</strong> from this BST:</p>
+<pre class="line-numbers language-none"><code class="language-none">     50
+    &#x2F;  \
+  30    70
+ &#x2F;  \   &#x2F;  \
+20  40 60  80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>30 has two children</strong> (20, 40).</li>
+<li>Find the <strong>inorder successor (40)</strong>.</li>
+<li>Replace 30 with <strong>40</strong>, then delete <strong>40</strong>. ✅</li>
+</ul>
+<p><strong>New BST after deletion:</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">     50
+    &#x2F;  \
+  40    70
+ &#x2F;      &#x2F;  \
+20     60  80<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h3 id="Summary-Table"><strong>Summary Table</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Description</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Search</strong></td>
+<td>Find a node by comparing values recursively.</td>
+<td rowspan="3">(O(\log n)) (Balanced), (O(n)) (Unbalanced)</td>
+</tr>
+<tr>
+<td><strong>Insert</strong></td>
+<td>Find correct position and insert as a leaf node.</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Remove a node and adjust structure accordingly.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Traversing Binary Tree</p>
 <p>Pre_Order_Traverse 前序遍历</p>
 <pre class="mermaid">graph TD
   1-->2
