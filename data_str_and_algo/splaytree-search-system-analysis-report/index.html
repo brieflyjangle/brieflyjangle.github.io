@@ -67,8 +67,8 @@
 	
 	
 
-<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body>
 	<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header">
@@ -370,9 +370,9 @@ D   E</code></pre>
 <ul>
 <li>
 <p>If no node with the same <code>id</code> exists, a new node is created using the <code>create_node</code> function, which allocates memory for a new <code>Node</code> and initializes its attributes.</p>
-<ol>
+<ul>
 <li>Case 1: Tree is Empty</li>
-</ol>
+</ul>
  <pre class="language-c" data-language="c"><code class="language-c">if (tree-&gt;root &#x3D;&#x3D; NULL) &#123;
    &#x2F;&#x2F; Tree is empty, new node becomes root
    tree-&gt;root &#x3D; newNode;
@@ -380,9 +380,9 @@ D   E</code></pre>
 </li>
 <li>
 <p>If the tree is empty (<code>tree-&gt;root == NULL</code>), the new node is set as the root of the tree.</p>
-<ol start="2">
+<ul>
 <li>Case 2: Tree is Non-Empty</li>
-</ol>
+</ul>
  <pre class="language-c" data-language="c"><code class="language-c">else &#123;
     &#x2F;&#x2F; Otherwise, find the parent node
     current &#x3D; tree-&gt;root;
@@ -443,7 +443,7 @@ D   E</code></pre>
 </ul>
 </li>
 </ul>
-<ol start="5">
+<ol start="4">
 <li>How <code>insert_splaytree</code>the Function Works
 <ol>
 <li>The tree performed pre-insertion search to check for duplicate nodes using the <code>id</code>.</li>
@@ -465,8 +465,7 @@ D   E</code></pre>
 <li>If the node is found (<code>current != NULL</code>), it proceeds with the deletion; otherwise, it prints an error message and exits.</li>
 </ul>
 <ol start="2">
-<li>Splay the Node to the Root<pre class="language-c" data-language="c"><code class="language-c">splay(tree, current);</code></pre>
-</li>
+<li>Splay the Node to the Root</li>
 </ol>
 <ul>
 <li>Before deletion, the node to be deleted is splayed (brought to the root).</li>
@@ -475,18 +474,20 @@ D   E</code></pre>
 <ol start="3">
 <li>
 <p>Handle the Three Cases of Deletion</p>
-<ol>
-<li>Case 1: Node Has No Children<pre class="language-c" data-language="c"><code class="language-c">if (current-&gt;left &#x3D;&#x3D; NULL &amp;&amp; current-&gt;right &#x3D;&#x3D; NULL) &#123;
+<ul>
+<li>
+<p>Case 1: Node Has No Children</p>
+ <pre class="language-c" data-language="c"><code class="language-c">if (current-&gt;left &#x3D;&#x3D; NULL &amp;&amp; current-&gt;right &#x3D;&#x3D; NULL) &#123;
    tree-&gt;root &#x3D; NULL;
    free(current);
 &#125;</code></pre>
-</li>
-</ol>
 <ul>
 <li>If the node has no children, it is simply removed, and the root is set to <code>NULL</code>.</li>
 </ul>
-<ol start="2">
-<li>Case 2: Node Has One Child <pre class="language-c" data-language="c"><code class="language-c">else if (current-&gt;left &#x3D;&#x3D; NULL || current-&gt;right &#x3D;&#x3D; NULL) &#123;
+</li>
+<li>
+<p>Case 2: Node Has One Child</p>
+  <pre class="language-c" data-language="c"><code class="language-c">else if (current-&gt;left &#x3D;&#x3D; NULL || current-&gt;right &#x3D;&#x3D; NULL) &#123;
     Node* child &#x3D; (current-&gt;left) ? current-&gt;left : current-&gt;right;
     if (current &#x3D;&#x3D; tree-&gt;root) &#123;
         tree-&gt;root &#x3D; child;
@@ -500,19 +501,16 @@ D   E</code></pre>
     &#125;
     free(current);
 &#125;</code></pre>
-</li>
-</ol>
 <ul>
-<li>If the node has only one child:
-<ul>
+<li>If the node has only one child:</li>
 <li>The child replaces the node in the tree.</li>
 <li>The child’s <code>parent</code> pointer is updated to point to the node’s parent.</li>
 <li>If the node is the root, the child becomes the new root.</li>
 </ul>
 </li>
-</ul>
-<ol start="3">
-<li>Case 3: Node Has Two Children <pre class="language-c" data-language="c"><code class="language-c">else &#123;
+<li>
+<p>Case 3: Node Has Two Children</p>
+  <pre class="language-c" data-language="c"><code class="language-c">else &#123;
     Node* successor &#x3D; current-&gt;right;
     while (successor-&gt;left !&#x3D; NULL) &#123;
         successor &#x3D; successor-&gt;left;
@@ -537,9 +535,8 @@ D   E</code></pre>
     free(successor);
 &#125;</code></pre>
 </li>
-</ol>
-<ul>
-<li>If the node has two children:
+<li>
+<p>If the node has two children:</p>
 <ul>
 <li>The <strong>in-order successor</strong> (smallest node in the right subtree) is located.</li>
 <li>The data from the successor node is copied to the current node.</li>
@@ -551,7 +548,7 @@ D   E</code></pre>
 </li>
 <li>
 <p>How <code>delete_splaytree</code> Function Works</p>
-<ol>
+<ul>
 <li>Searches for the node to delete.</li>
 <li>Splays the node to bring it to the root.</li>
 <li>Handles deletion based on the node’s number of children:
@@ -563,7 +560,7 @@ D   E</code></pre>
 </li>
 <li>Updates the tree structure to maintain validity after deletion.</li>
 <li>Returns success or failure based on whether the node was found.</li>
-</ol>
+</ul>
 </li>
 </ol>
 <h3 id="2-2-System-Design">2.2 System Design</h3>
