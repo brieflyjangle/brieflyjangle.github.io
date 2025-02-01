@@ -67,7 +67,8 @@
 	
 	
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
 	<header id="header">
@@ -237,7 +238,13 @@
   6-->7
   7-->8
   6-->9</pre>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PreOrderTraverse</span> <span class="params">(BiTree T)</span>&#123;<span class="comment">//[1[2[3[4[n   ][5[n  ]]] n  ]  6 ]</span></span><br><span class="line">    <span class="keyword">if</span> ( T == <span class="literal">NULL</span> )             <span class="comment">//         n n       n n    n n</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,T-&gt;data);        <span class="comment">//1 2 3 4         5              6</span></span><br><span class="line">    PreorderTraverse(T-&gt;lchild); <span class="comment">//2 3 4 n         n              7</span></span><br><span class="line">    PreorderTraverse(T-&gt;rchild); <span class="comment">//          n 5    n      n  6  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void PreOrderTraverse (BiTree T)&#123;&#x2F;&#x2F;[1[2[3[4[n   ][5[n  ]]] n  ]  6 ]
+    if ( T &#x3D;&#x3D; NULL )             &#x2F;&#x2F;         n n       n n    n n
+        return
+    printf(&quot;%c&quot;,T-&gt;data);        &#x2F;&#x2F;1 2 3 4         5              6
+    PreorderTraverse(T-&gt;lchild); &#x2F;&#x2F;2 3 4 n         n              7
+    PreorderTraverse(T-&gt;rchild); &#x2F;&#x2F;          n 5    n      n  6  
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>In_Order_Traverse 中序遍历</p>
 <pre class="mermaid">graph TD
   5-->4
@@ -248,7 +255,13 @@
   8-->6
   6-->7
   8-->9</pre>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">InOrderTraverse</span> <span class="params">(BiTree T)</span>&#123;<span class="comment">//</span></span><br><span class="line">  <span class="keyword">if</span>(T == <span class="literal">NULL</span>)                 <span class="comment">//</span></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  InorderTraverse(T-&gt;lchild):   <span class="comment">//</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,T-&gt;data);         <span class="comment">//</span></span><br><span class="line">  InorderTraverse(T-&gt;rchild):   <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void InOrderTraverse (BiTree T)&#123;&#x2F;&#x2F;
+  if(T &#x3D;&#x3D; NULL)                 &#x2F;&#x2F;
+    return;
+  InorderTraverse(T-&gt;lchild):   &#x2F;&#x2F;
+  printf(&quot;%c&quot;,T-&gt;data);         &#x2F;&#x2F;
+  InorderTraverse(T-&gt;rchild):   &#x2F;&#x2F;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Post_Order_Traverse 后序遍历</p>
 <pre class="mermaid">graph TD
   9-->4
@@ -259,7 +272,13 @@
   8-->6
   8-->7
   6-->5</pre>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PostOrderTraverse</span><span class="params">(BiTree T)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(T = <span class="literal">NULL</span>)</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">  PostOrderTraverse(T-&gt;lchild);</span><br><span class="line">  PostOrderTraverse(T-&gt;rchild);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>,T-&gt;data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">void PostOrderTraverse(BiTree T)&#123;
+  if(T &#x3D; NULL)
+  return;
+  PostOrderTraverse(T-&gt;lchild);
+  PostOrderTraverse(T-&gt;rchild);
+  printf(&quot;%c&quot;,T-&gt;data);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Level_Order_Traverse 层序遍历</p>
 <pre class="mermaid">graph TD
   1-->2
@@ -270,7 +289,7 @@
   3-->5
   3-->6
   5-->9</pre>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 </div>
 

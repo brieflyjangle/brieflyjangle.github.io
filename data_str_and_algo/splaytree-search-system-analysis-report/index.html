@@ -67,7 +67,8 @@
 	
 	
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
 	<header id="header">
@@ -266,12 +267,15 @@ To handle a large number of student records (e.g., thousands of records) while m
 <ol>
 <li>Input Parameters of the <code>search_splaytree</code></li>
 </ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Node* <span class="title function_">search_splaytree</span><span class="params">(SplayTree* tree, <span class="type">const</span> <span class="type">char</span>* key, <span class="type">const</span> <span class="type">char</span>* traversal_type)</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Node* search_splaytree(SplayTree* tree, const char* key, const char* traversal_type)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><strong><code>tree</code></strong>: Pointer to the splay tree in which the search is performed.</li>
 <li><strong><code>key</code></strong>: The key (unique identifier) of the node you want to find.</li>
 <li><strong><code>traversal_type</code></strong>: A string that specifies the traversal method.</li>
-<li>Case Statement for <strong>traversal type</strong>.<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (traversal_type[<span class="number">0</span>])</span><br><span class="line">- <span class="keyword">case</span> `<span class="string">&#x27;p&#x27;</span>` <span class="keyword">for</span> preordr</span><br><span class="line">- <span class="keyword">case</span> `<span class="string">&#x27;i&#x27;</span>` <span class="keyword">for</span> inorder</span><br><span class="line">- <span class="keyword">case</span> `<span class="string">&#x27;o&#x27;</span>` <span class="keyword">for</span> postorder</span><br></pre></td></tr></table></figure>
+<li>Case Statement for <strong>traversal type</strong>.<pre class="line-numbers language-c" data-language="c"><code class="language-c">switch (traversal_type[0])
+- case &#96;&#39;p&#39;&#96; for preordr
+- case &#96;&#39;i&#39;&#96; for inorder
+- case &#96;&#39;o&#39;&#96; for postorder<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>The function examines the first character of the <code>traversal_type</code> string (<code>traversal_type[0]</code>).</li>
 <li>Depending on its value, it calls the appropriate traversal-based search function.</li>
@@ -282,7 +286,11 @@ To handle a large number of student records (e.g., thousands of records) while m
 <ul>
 <li><code>Preorder_search</code> function traverses the tree in <strong>Root → Left → Right</strong> order and searches for a node with the given <code>key</code>.</li>
 <li>Preorder traversal is used for general searches (like when inserting).</li>
-<li>For a binary tree:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    A</span><br><span class="line">   / \</span><br><span class="line">  B   C</span><br><span class="line"> / \</span><br><span class="line">D   E</span><br></pre></td></tr></table></figure>
+<li>For a binary tree:<pre class="line-numbers language-none"><code class="language-none">    A
+   &#x2F; \
+  B   C
+ &#x2F; \
+D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>Preorder Traversal: <code>A B D E C</code></li>
 </ul>
@@ -292,7 +300,11 @@ To handle a large number of student records (e.g., thousands of records) while m
 <ul>
 <li><code>Inorder traversal</code> visits nodes in <strong>Left → Root → Right</strong> order.</li>
 <li>While not typically used for key-based searches in a binary search tree, it can be helpful for operations requiring sorted order traversal.</li>
-<li>For a binary tree:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  A</span><br><span class="line"> / \</span><br><span class="line"> B   C</span><br><span class="line">/ \</span><br><span class="line">D   E</span><br></pre></td></tr></table></figure>
+<li>For a binary tree:  <pre class="line-numbers language-none"><code class="language-none">  A
+ &#x2F; \
+ B   C
+&#x2F; \
+D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>Inorder Traversal: <code>D B E A C</code></li>
 </ul>
@@ -308,7 +320,11 @@ To handle a large number of student records (e.g., thousands of records) while m
 </li>
 <li>
 <p>For a binary tree:</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    A</span><br><span class="line">   / \</span><br><span class="line">  B   C</span><br><span class="line"> / \</span><br><span class="line">D   E</span><br></pre></td></tr></table></figure>
+  <pre class="line-numbers language-none"><code class="language-none">    A
+   &#x2F; \
+  B   C
+ &#x2F; \
+D   E<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p>Postorder Traversal: <code>D E B C A</code></p>
@@ -326,7 +342,7 @@ To handle a large number of student records (e.g., thousands of records) while m
 <h5 id="Use-Case-2-Insert">Use Case 2: Insert</h5>
 <p><code>insert_splaytree</code> function attempts to insert a new node with the given id, name, class, and record into the splay tree. If a node with the same id already exists, it prevents duplication.</p>
 <ol>
-<li>Search for an Existing Node<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">current = search_splaytree(tree, id, <span class="string">&quot;preorder&quot;</span>);  <span class="comment">// Search for the node before insertion</span></span><br></pre></td></tr></table></figure>
+<li>Search for an Existing Node<pre class="line-numbers language-c" data-language="c"><code class="language-c">current &#x3D; search_splaytree(tree, id, &quot;preorder&quot;);  &#x2F;&#x2F; Search for the node before insertion<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ol>
 <ul>
@@ -335,7 +351,8 @@ To handle a large number of student records (e.g., thousands of records) while m
 <li>If a node is found (<code>current != NULL</code>), the function prevents duplicate insertion and exits early.</li>
 </ul>
 <ol start="2">
-<li>Create and Insert a New Node<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (current == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    Node* newNode = create_node(id, name, class, record); </span><br></pre></td></tr></table></figure>
+<li>Create and Insert a New Node<pre class="line-numbers language-c" data-language="c"><code class="language-c">if (current &#x3D;&#x3D; NULL) &#123;
+    Node* newNode &#x3D; create_node(id, name, class, record); <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 </ol>
 <ul>
@@ -344,14 +361,35 @@ To handle a large number of student records (e.g., thousands of records) while m
 <ol>
 <li>Case 1: Tree is Empty</li>
 </ol>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (tree-&gt;root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">   <span class="comment">// Tree is empty, new node becomes root</span></span><br><span class="line">   tree-&gt;root = newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <pre class="line-numbers language-c" data-language="c"><code class="language-c">if (tree-&gt;root &#x3D;&#x3D; NULL) &#123;
+   &#x2F;&#x2F; Tree is empty, new node becomes root
+   tree-&gt;root &#x3D; newNode;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p>If the tree is empty (<code>tree-&gt;root == NULL</code>), the new node is set as the root of the tree.</p>
 <ol start="2">
 <li>Case 2: Tree is Non-Empty</li>
 </ol>
- <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// Otherwise, find the parent node</span></span><br><span class="line">    current = tree-&gt;root;</span><br><span class="line">    <span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        parent = current;</span><br><span class="line">        <span class="keyword">if</span> (strcasecmp(id, current-&gt;key) &lt; <span class="number">0</span>)</span><br><span class="line">            current = current-&gt;left;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            current = current-&gt;right;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Insert the new node as the left or right child of the parent</span></span><br><span class="line">    <span class="keyword">if</span> (strcasecmp(name, parent-&gt;key) &lt; <span class="number">0</span>)</span><br><span class="line">        parent-&gt;left = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent-&gt;right = newNode;</span><br><span class="line"></span><br><span class="line">    newNode-&gt;parent = parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ <pre class="line-numbers language-c" data-language="c"><code class="language-c">else &#123;
+    &#x2F;&#x2F; Otherwise, find the parent node
+    current &#x3D; tree-&gt;root;
+    while (current !&#x3D; NULL) &#123;
+        parent &#x3D; current;
+        if (strcasecmp(id, current-&gt;key) &lt; 0)
+            current &#x3D; current-&gt;left;
+        else
+            current &#x3D; current-&gt;right;
+    &#125;
+
+    &#x2F;&#x2F; Insert the new node as the left or right child of the parent
+    if (strcasecmp(name, parent-&gt;key) &lt; 0)
+        parent-&gt;left &#x3D; newNode;
+    else
+        parent-&gt;right &#x3D; newNode;
+
+    newNode-&gt;parent &#x3D; parent;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>
 <p><strong>Traverse the Tree</strong>:</p>
@@ -407,7 +445,7 @@ To handle a large number of student records (e.g., thousands of records) while m
 <h5 id="5-Use-case-3-Delete">5. Use case 3: Delete</h5>
 <p>The <code>delete_splaytree</code> function removes a node with the specified <code>key</code> from a <strong>splay tree</strong> while maintaining the tree’s structure and properties.</p>
 <ol>
-<li>Search for the Node to Delete<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Node* current = search_splaytree(tree, key, <span class="string">&quot;preorder&quot;</span>);</span><br></pre></td></tr></table></figure>
+<li>Search for the Node to Delete<pre class="line-numbers language-c" data-language="c"><code class="language-c">Node* current &#x3D; search_splaytree(tree, key, &quot;preorder&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ol>
 <ul>
@@ -415,7 +453,7 @@ To handle a large number of student records (e.g., thousands of records) while m
 <li>If the node is found (<code>current != NULL</code>), it proceeds with the deletion; otherwise, it prints an error message and exits.</li>
 </ul>
 <ol start="2">
-<li>Splay the Node to the Root<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">splay(tree, current);</span><br></pre></td></tr></table></figure>
+<li>Splay the Node to the Root<pre class="line-numbers language-c" data-language="c"><code class="language-c">splay(tree, current);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ol>
 <ul>
@@ -426,14 +464,30 @@ To handle a large number of student records (e.g., thousands of records) while m
 <li>
 <p>Handle the Three Cases of Deletion</p>
 <ol>
-<li>Case 1: Node Has No Children<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (current-&gt;left == <span class="literal">NULL</span> &amp;&amp; current-&gt;right == <span class="literal">NULL</span>) &#123;</span><br><span class="line">   tree-&gt;root = <span class="literal">NULL</span>;</span><br><span class="line">   <span class="built_in">free</span>(current);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>Case 1: Node Has No Children<pre class="line-numbers language-c" data-language="c"><code class="language-c">if (current-&gt;left &#x3D;&#x3D; NULL &amp;&amp; current-&gt;right &#x3D;&#x3D; NULL) &#123;
+   tree-&gt;root &#x3D; NULL;
+   free(current);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
 <ul>
 <li>If the node has no children, it is simply removed, and the root is set to <code>NULL</code>.</li>
 </ul>
 <ol start="2">
-<li>Case 2: Node Has One Child <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (current-&gt;left == <span class="literal">NULL</span> || current-&gt;right == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    Node* child = (current-&gt;left) ? current-&gt;left : current-&gt;right;</span><br><span class="line">    <span class="keyword">if</span> (current == tree-&gt;root) &#123;</span><br><span class="line">        tree-&gt;root = child;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (current == current-&gt;parent-&gt;left)</span><br><span class="line">            current-&gt;parent-&gt;left = child;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            current-&gt;parent-&gt;right = child;</span><br><span class="line"></span><br><span class="line">        child-&gt;parent = current-&gt;parent;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(current);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>Case 2: Node Has One Child <pre class="line-numbers language-c" data-language="c"><code class="language-c">else if (current-&gt;left &#x3D;&#x3D; NULL || current-&gt;right &#x3D;&#x3D; NULL) &#123;
+    Node* child &#x3D; (current-&gt;left) ? current-&gt;left : current-&gt;right;
+    if (current &#x3D;&#x3D; tree-&gt;root) &#123;
+        tree-&gt;root &#x3D; child;
+    &#125; else &#123;
+        if (current &#x3D;&#x3D; current-&gt;parent-&gt;left)
+            current-&gt;parent-&gt;left &#x3D; child;
+        else
+            current-&gt;parent-&gt;right &#x3D; child;
+
+        child-&gt;parent &#x3D; current-&gt;parent;
+    &#125;
+    free(current);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
 <ul>
@@ -446,7 +500,30 @@ To handle a large number of student records (e.g., thousands of records) while m
 </li>
 </ul>
 <ol start="3">
-<li>Case 3: Node Has Two Children <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    Node* successor = current-&gt;right;</span><br><span class="line">    <span class="keyword">while</span> (successor-&gt;left != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        successor = successor-&gt;left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Replace current node&#x27;s data with successor&#x27;s data</span></span><br><span class="line">    <span class="built_in">strcpy</span>(current-&gt;key, successor-&gt;key);</span><br><span class="line">    <span class="built_in">strcpy</span>(current-&gt;name, successor-&gt;name);</span><br><span class="line">    <span class="built_in">strcpy</span>(current-&gt;class, successor-&gt;class);</span><br><span class="line">    <span class="built_in">strcpy</span>(current-&gt;record, successor-&gt;record);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Successor will have at most one child (right child)</span></span><br><span class="line">    Node* child = successor-&gt;right;</span><br><span class="line">    <span class="keyword">if</span> (successor-&gt;parent-&gt;left == successor)</span><br><span class="line">        successor-&gt;parent-&gt;left = child;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        successor-&gt;parent-&gt;right = child;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (child != <span class="literal">NULL</span>) </span><br><span class="line">        child-&gt;parent = successor-&gt;parent;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(successor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>Case 3: Node Has Two Children <pre class="line-numbers language-c" data-language="c"><code class="language-c">else &#123;
+    Node* successor &#x3D; current-&gt;right;
+    while (successor-&gt;left !&#x3D; NULL) &#123;
+        successor &#x3D; successor-&gt;left;
+    &#125;
+
+    &#x2F;&#x2F; Replace current node&#39;s data with successor&#39;s data
+    strcpy(current-&gt;key, successor-&gt;key);
+    strcpy(current-&gt;name, successor-&gt;name);
+    strcpy(current-&gt;class, successor-&gt;class);
+    strcpy(current-&gt;record, successor-&gt;record);
+
+    &#x2F;&#x2F; Successor will have at most one child (right child)
+    Node* child &#x3D; successor-&gt;right;
+    if (successor-&gt;parent-&gt;left &#x3D;&#x3D; successor)
+        successor-&gt;parent-&gt;left &#x3D; child;
+    else
+        successor-&gt;parent-&gt;right &#x3D; child;
+
+    if (child !&#x3D; NULL) 
+        child-&gt;parent &#x3D; successor-&gt;parent;
+
+    free(successor);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
 <ul>
@@ -560,7 +637,15 @@ Algorithm: Flowchart for each module</p>
 <li>This makes the target node (<code>x</code>) the new root.</li>
 </ul>
 <p><strong>Diagram:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Before Zig:</span><br><span class="line">      p</span><br><span class="line">     /</span><br><span class="line">    x</span><br><span class="line"></span><br><span class="line">After Zig:</span><br><span class="line">    x</span><br><span class="line">     \</span><br><span class="line">      p</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">Before Zig:
+      p
+     &#x2F;
+    x
+
+After Zig:
+    x
+     \
+      p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Effect:</strong></p>
 <ul>
 <li>The height of the subtree decreases.</li>
@@ -577,7 +662,15 @@ Algorithm: Flowchart for each module</p>
 <li>This makes the target node (<code>x</code>) the new root.</li>
 </ul>
 <p><strong>Diagram:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Before Zag:</span><br><span class="line">    p</span><br><span class="line">     \</span><br><span class="line">      x</span><br><span class="line"></span><br><span class="line">After Zag:</span><br><span class="line">      x</span><br><span class="line">     /</span><br><span class="line">    p</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">Before Zag:
+    p
+     \
+      x
+
+After Zag:
+      x
+     &#x2F;
+    p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Effect:</strong></p>
 <ul>
 <li>Similar to Zig, the subtree height decreases, and <code>x</code> becomes the root.</li>
@@ -593,7 +686,19 @@ Algorithm: Flowchart for each module</p>
 <li>Perform another right rotation on the parent (<code>p</code>).</li>
 </ol>
 <p><strong>Diagram:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Before Zig-Zig:</span><br><span class="line">        g</span><br><span class="line">       /</span><br><span class="line">      p</span><br><span class="line">     /</span><br><span class="line">    x</span><br><span class="line"></span><br><span class="line">After Zig-Zig:</span><br><span class="line">    x</span><br><span class="line">     \</span><br><span class="line">      p</span><br><span class="line">       \</span><br><span class="line">        g</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">Before Zig-Zig:
+        g
+       &#x2F;
+      p
+     &#x2F;
+    x
+
+After Zig-Zig:
+    x
+     \
+      p
+       \
+        g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Effect:</strong></p>
 <ul>
 <li><code>x</code> is moved two levels closer to the root.</li>
@@ -610,7 +715,19 @@ Algorithm: Flowchart for each module</p>
 <li>Perform another left rotation on the parent (<code>p</code>).</li>
 </ol>
 <p><strong>Diagram:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Before Zag-Zag:</span><br><span class="line">    g</span><br><span class="line">     \</span><br><span class="line">      p</span><br><span class="line">       \</span><br><span class="line">        x</span><br><span class="line"></span><br><span class="line">After Zag-Zag:</span><br><span class="line">        x</span><br><span class="line">       /</span><br><span class="line">      p</span><br><span class="line">     /</span><br><span class="line">    g</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">Before Zag-Zag:
+    g
+     \
+      p
+       \
+        x
+
+After Zag-Zag:
+        x
+       &#x2F;
+      p
+     &#x2F;
+    g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Effect:</strong></p>
 <ul>
 <li><code>x</code> is moved two levels closer to the root.</li>
@@ -627,7 +744,17 @@ Algorithm: Flowchart for each module</p>
 <li>Perform a left rotation on the grandparent (<code>g</code>).</li>
 </ol>
 <p><strong>Diagram:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Before Zig-Zag:</span><br><span class="line">        g</span><br><span class="line">         \</span><br><span class="line">          p</span><br><span class="line">         /</span><br><span class="line">        x</span><br><span class="line"></span><br><span class="line">After Zig-Zag:</span><br><span class="line">        x</span><br><span class="line">       / \</span><br><span class="line">      g   p</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">Before Zig-Zag:
+        g
+         \
+          p
+         &#x2F;
+        x
+
+After Zig-Zag:
+        x
+       &#x2F; \
+      g   p<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Effect:</strong></p>
 <ul>
 <li><code>x</code> is moved two levels closer to the root.</li>
@@ -644,7 +771,17 @@ Algorithm: Flowchart for each module</p>
 <li>Perform a right rotation on the grandparent (<code>g</code>).</li>
 </ol>
 <p><strong>Diagram:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Before Zag-Zig:</span><br><span class="line">        g</span><br><span class="line">       /</span><br><span class="line">      p</span><br><span class="line">       \</span><br><span class="line">        x</span><br><span class="line"></span><br><span class="line">After Zag-Zig:</span><br><span class="line">        x</span><br><span class="line">       / \</span><br><span class="line">      p   g</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">Before Zag-Zig:
+        g
+       &#x2F;
+      p
+       \
+        x
+
+After Zag-Zig:
+        x
+       &#x2F; \
+      p   g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Effect:</strong></p>
 <ul>
 <li>Similar to Zig-Zag, <code>x</code> is moved two levels closer to the root, resolving cross-relationship imbalances.</li>
@@ -699,7 +836,11 @@ Algorithm: Flowchart for each module</p>
 <p>Each rotation rebalances the tree while ensuring the target node moves closer to the root, maintaining efficient access patterns. Let me know if you’d like further clarification!</p>
 <h5 id="Example-of-How-Splay-Tree-Works"><strong>Example of How Splay Tree Works</strong></h5>
 <h5 id="Initial-Tree">Initial Tree:</h5>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    50</span><br><span class="line">   /  \</span><br><span class="line"> 30    70</span><br><span class="line"> / \</span><br><span class="line">20  40</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">    50
+   &#x2F;  \
+ 30    70
+ &#x2F; \
+20  40<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="Search-for-Node-20"><strong>Search for Node 20:</strong></h5>
 <ol>
 <li>
@@ -716,7 +857,13 @@ Algorithm: Flowchart for each module</p>
 </li>
 </ol>
 <h5 id="Final-Tree">Final Tree:</h5>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">20</span><br><span class="line">  \</span><br><span class="line">   30</span><br><span class="line">     \</span><br><span class="line">      50</span><br><span class="line">     /  \</span><br><span class="line">   40    70</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">20
+  \
+   30
+     \
+      50
+     &#x2F;  \
+   40    70<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="Advantages-of-Splay-Trees"><strong>Advantages of Splay Trees</strong></h5>
 <ol>
 <li><strong>Simple to Implement</strong>:
