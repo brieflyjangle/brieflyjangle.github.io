@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Intro_to_data_arch | 
+	 
+	Huiwen Learning Notes
+	</title>
+	
+	<!-- keywords,description -->
+	
+	
+
+	<!-- favicon -->
+	
+
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+
+	
+	
+
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header">
+    <a id="title" href="/" class="logo">Huiwen Learning Notes</a>
+
+	<ul id="menu">
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										big_data
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/big_data/map-reduce/">
+                     
+										    map-reduce
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										computer_arch
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/computer_arch/Chap1-fundamental-quantitative-design-n-analysis/">
+                     
+										    Chap1-fundamental-quantitative-design-n-analysis
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										data_str_and_algo
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/data_str_and_algo/Intro-to-data-arch/">
+                     
+										    Intro-to-data-arch
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/adv-bin-search-tree/">
+                     
+										    adv-bin-search-tree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/bin_search_tree/">
+                     
+										    bin_search_tree
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/intro-to-algo/">
+                     
+										    intro-to-algo
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/data_str_and_algo/splaytree-search-system-analysis-report/">
+                     
+										    splaytree-search-system-analysis-report
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										other
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/other/how-to-start-personal-blog/">
+                     
+										    how-to-start-personal-blog
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/other/settingUp-shell/">
+                     
+										    settingUp-shell
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	Intro_to_data_arch
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>HuiWen</span>
+	<span>2025-02-08 14:23:25</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<hr>
+<h1>Linear Data Structure</h1>
+<hr>
+<h1>Linear Lists that do not have any restrictions</h1>
+<h2 id="1-Array">1. Array</h2>
+<h2 id="2-Linked-List">2. Linked_List</h2>
+<h3 id="2-1-Singly-linked-list">2.1 Singly linked list</h3>
+<h3 id="2-2-Doubly-linked-list">2.2 Doubly linked list</h3>
+<h3 id="2-3-Circular-linked-list">2.3 Circular linked list</h3>
+<h3 id="2-4-Circular-doubly-linked-list">2.4 Circular doubly linked list</h3>
+<h3 id="2-5-Sorted-linked-list">2.5 Sorted linked list</h3>
+<h3 id="2-6-Unsorted-linked-list">2.6 Unsorted linked list</h3>
+<hr>
+<h1>Linear Lists that Have restrictions</h1>
+<h2 id="3-Stacks-LIFO-LAST-IN-FIRST-OUT">3. Stacks - LIFO (LAST IN FIRST OUT)</h2>
+<h3 id="3-1-Array-implementation-of-stack">3.1 Array implementation of stack</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">Stack declaration:
+const int size &#x3D; 100; 
+class stack&#123;
+    private : &#x2F;&#x2F; data declaration 
+        int top ;
+        char data[size] ;
+    public : &#x2F;&#x2F; function declaration
+        void createStack();
+        void push(char) ; &#x2F;&#x2F; insert operation 
+        void pop() ; &#x2F;&#x2F; delete operation 
+        char stackTop() ; &#x2F;&#x2F; get top value
+        bool isFull() ; &#x2F;&#x2F; check if stack is Full 
+        bool isEmpty(); &#125;; &#x2F;&#x2F; check if stack is empty
+&#125;</code></pre>
+<h3 id="3-2-Linked-List-implementation-of-stack">3.2 Linked List implementation of stack</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">class nodeStack&#123;
+    int data;
+    nodeStack *next; 
+&#125;;
+class stack &#123;
+    private: 
+        nodeStack *top;
+    public :
+        void createStack(); &#x2F;&#x2F; set Top to NULL
+        void push(int) ; &#x2F;&#x2F; insert item into stack 
+        void pop() ; &#x2F;&#x2F; delete item from stack
+        int stackTop() ; &#x2F;&#x2F; get content at top stack 
+        bool isEmpty(); &#x2F;&#x2F; check whether stack is empty
+&#125;;</code></pre>
+<p>Application of stack</p>
+<ul>
+<li>Parentheses balance</li>
+<li>Evaluate Algebaric expressions -infix, prefix and postfix</li>
+</ul>
+<h2 id="4-Queues-FIFO-FIRST-IN-FIRST-OUT">4. Queues - FIFO (FIRST IN FIRST OUT)</h2>
+<h3 id="4-1-Array-Implementation-of-queue">4.1 Array Implementation of queue</h3>
+<h3 id="4-2-Circular-array-queue">4.2 Circular array queue</h3>
+<h3 id="4-3-Linked-list-Implementation-of-queue">4.3 Linked-list Implementation of queue</h3>
+<h3 id="4-4-Circular-linked-list-queue">4.4 Circular linked-list queue</h3>
+<h3 id="4-5-Heap-Priority-Queue">4.5 Heap ( Priority Queue )</h3>
+<h2 id="5-Hash">5. Hash</h2>
+<p><strong>How Hashing Works</strong><br>
+Hashing is a technique used to store and retrieve data efficiently using a <strong>hash function</strong> that maps keys to indices in a fixed-size array called a <strong>hash table</strong>. It is widely used in databases, caching, and cryptographic applications.</p>
+<p><strong>What Does Capacity Mean in Hash Tables?</strong><br>
+Capacity in hash tables refers to the total number of available slots (or buckets) in the hash table where elements can be stored. It defines the maximum number of elements the hash table can hold before resizing is required.</p>
+<p><strong>Steps in Hashing</strong></p>
+<ol>
+<li>
+<p><strong>Choose a Hash Function:</strong></p>
+<ul>
+<li>A <strong>hash function</strong> converts a given key into an index for storing data in the hash table.</li>
+<li>Hash functions are designed to efficiently map keys to indices in a hash table.</li>
+<li>There are several types of hash functions, categorized based on their method of computation and application.</li>
+</ul>
+<p>Example ( Division (Modulo) Method ):<br>
+[<br>
+index = hash(key) % tableSize<br>
+]</p>
+<p><strong>How to Determine the Table Size in the Modulo Hash Function</strong></p>
+<ul>
+<li>In hashing, the table size (number of slots in the hash table) significantly affects performance, particularly when using the modulo division method:</li>
+<li>A good table size minimizes collisions and ensures efficient key distribution.</li>
+</ul>
+<p><strong>Here’s how to choose an optimal table size:</strong></p>
+<ul>
+<li>Use a Prime Number for Table Size
+<ul>
+<li>A prime number reduces patterns in the hashed indices.</li>
+<li>It prevents clustering when keys follow a certain sequence (e.g., multiples of 2, 5, etc.).</li>
+<li>Ensures a more uniform distribution of hash values.</li>
+</ul>
+</li>
+<li>How to choose?
+<ul>
+<li>Select a prime number close to 1.5x or 2x the expected number of elements. Example:</li>
+<li>If you expect 50 elements, choose a prime near 100 (e.g., 97 or 101).</li>
+<li>If you expect 200 elements, choose a prime near 400 (e.g., 397).<br>
+<br></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Insert Data into the Hash Table:</strong></p>
+<ul>
+<li>Compute the hash value.</li>
+<li>Place the data at the computed index.</li>
+<li>If a collision occurs, resolve it using techniques like <strong>linear probing, chaining, or double hashing</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Search for Data:</strong></p>
+<ul>
+<li>Compute the hash value for the given key.</li>
+<li>If the key is found at the index, return the value.</li>
+<li>If there’s a collision, check the next possible positions based on the collision resolution method.</li>
+</ul>
+</li>
+<li>
+<p><strong>Handle Collisions (When Two Keys Hash to the Same Index):</strong><br>
+<strong>Example ( linear probing ):</strong><br>
+Compute the hash index using a hash function:<br>
+[<br>
+index = hash(key) % tableSize<br>
+]<br>
+If the calculated index is already occupied (collision occurs), check the next index:<br>
+[<br>
+index = (index + 1) % tableSize<br>
+]<br>
+Repeat the process until an empty slot is found.<br>
+Consider a hash table of size 10, and the hash function is:<br>
+[<br>
+hash(key) = key % 10<br>
+]<br>
+Let’s insert the following keys: 23, 33, 43, 53.</p>
+<ol>
+<li>insert 23 → <code>23 % 10 = 3</code> → Insert at index 3.</li>
+<li>Insert 33 → <code>33 % 10 = 3</code> (collision) → Check index 4 → Insert at 4.</li>
+<li>Insert 43 → <code>43 % 10 = 3</code> (collision) → Check index 5 → Insert at 5.</li>
+<li>Insert 53 → <code>53 % 10 = 3</code> (collision) → Check index 6 → Insert at 6.</li>
+</ol>
+<p>Final Hash Table:<br>
+Index:  0  1  2  3  4  5  6  7  8  9<br>
+Values: -  -  - 23 33 43 53 -  -  -<br>
+<br>
+<strong>Example (double hashing):</strong><br>
+Compute the first hash (Primary Hash Function):<br>
+[<br>
+h1(key) = key % tableSize<br>
+]<br>
+Compute the second hash (Step Size/Probe Jump):<br>
+[<br>
+h2(key) = 1 + (key % (tableSize - 1))<br>
+]<br>
+Compute the third hash (Step Size/Probe Jump):<br>
+[<br>
+h3(key) = 1 + (key % (tableSize - 2))<br>
+]<br>
+This ensures the step size is <strong>non-zero</strong> and spreads keys uniformly.<br>
+Resolve collisions using step increments:<br>
+[<br>
+index = (h1(key) + i \times h2(key)) % tableSize<br>
+]<br>
+If a collision occurs at <code>h1(key)</code>, check h1 + h2, h1 + 2h2, h1 + 3h2, … until an empty slot is found.</p>
+<p>Given:</p>
+<ul>
+<li>Keys: <code>&#123;205, 308, 411, 512, 103, 2&#125;</code></li>
+<li>Table Size: <code>103</code></li>
+<li>Primary Hash Function:<br>
+[<br>
+h1(key) = key % 103<br>
+]</li>
+<li>Secondary Hash Function:<br>
+[<br>
+h2(key) = 1 + (key % 101)<br>
+]</li>
+</ul>
+</li>
+</ol>
+<p><strong>Advantages of Hashing</strong><br>
+✔ <strong>Fast lookups</strong> – Typically <strong>O(1)</strong> time complexity.<br>
+✔ <strong>Efficient for large datasets</strong> – Better than linear search.<br>
+✔ <strong>No need for sorting</strong> – Unlike binary search.</p>
+<hr>
+<h1>Non-Linear Data Structure</h1>
+<hr>
+<h2 id="6-Tree">6. Tree</h2>
+<h3 id="6-1-Binary-Search-Tree">6.1 Binary Search Tree</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">typedef char ItemType;
+struct TreeNode
+&#123;
+itemType info;
+TreeNode *left;
+TreeNode *right;
+&#125;
+
+class TreeType &#123;
+public:
+    TreeType();
+    ~TreeType();
+    bool IsEmpty()const;
+    int NumberOfNodes()const;
+    void RetrieveItem(ItemType&amp;,bool&amp; found);
+    void InsertItem(ItemType);
+    void DeleteItem(ItemType);
+    void PrintTree() const;
+private:
+    TreeNode * root;
+&#125;;</code></pre>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>average case</th>
+<th>worst case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>retrieval</td>
+<td rowspan="3">O(logn)</td>
+<td rowspan="4">O(n)</td>
+</tr>
+<tr>
+<td>Insertion</td>
+</tr>
+<tr>
+<td>Deletion</td>
+</tr>
+<tr>
+<td>Traversal</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-2-Balancing-Binary-Search-Trees">6.2 Balancing Binary Search Trees</h3>
+<h4 id="6-2-1-Adelson-Velskii-and-Landis-AVL-trees-height-balanced-trees">6.2.1 Adelson-Velskii and Landis (AVL) trees (height-balanced trees)</h4>
+<h4 id="6-2-2-Splay-trees-and-other-self-adjusting-trees">6.2.2 Splay trees and other self-adjusting trees</h4>
+<h4 id="6-2-3-B-trees-and-other-multiway-search-trees">6.2.3 B-trees and other multiway search trees</h4>
+<h2 id="7-Graph">7. Graph</h2>
+<h3 id="7-1-Depth-First-Search-DFS">7.1 Depth First Search (DFS)</h3>
+<h3 id="7-2-Breath-First-Search-BFS">7.2 Breath First Search (BFS)</h3>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/data_str_and_algo/intro-to-algo/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  intro_to_algo
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/data_str_and_algo/adv-bin-search-tree/">
+                adv_bin_search_tree
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+	©<span id="footerYear-start"></span>-<span id="footerYear-end"></span>
+
+	
+	    <a href="/">HuiWen</a>
+	
+	
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//wujun.me" target="_blank">Wu Jun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+<script type="text/javascript">
+	document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+</script>
+
+<script type="text/javascript">
+	document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+</script>
+
+    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme: 'forest'});
+      }
+    </script>
+
+
+
+
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
