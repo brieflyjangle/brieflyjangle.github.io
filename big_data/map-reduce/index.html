@@ -423,14 +423,14 @@ Item 503: 1 order  </code></pre>
 </ol>
 <h4 id="Second-MapReduce-Average-Calculation"><strong>Second MapReduce (Average Calculation)</strong></h4>
 <h4 id="Map-Phase-2">Map Phase 2:</h4>
-<ul>
-<li>Reorganize data by <code>company_id</code>:</li>
-</ul>
-<pre class="language-none"><code class="language-none">(1, (2023-10-01, 599.98))  
+<ol>
+<li>Reorganize data by <code>company_id</code>: <pre class="language-none"><code class="language-none">(1, (2023-10-01, 599.98))  
 (2, (2023-10-01, 99.99))  
 (1, (2023-10-02, 899.97))  
 (3, (2023-10-02, 149.99))  
 (2, (2023-10-03, 199.98))  </code></pre>
+</li>
+</ol>
 <h4 id="Reduce-Phase-2">Reduce Phase 2:</h4>
 <ol>
 <li>Input: <code>(company_id, [(date, revenue), ...])</code><br>
