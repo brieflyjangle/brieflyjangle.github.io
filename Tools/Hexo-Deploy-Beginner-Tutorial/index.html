@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Hexo Deploy Beginner-Tutorial | Huiwen Learning Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="hexodeploybeginner" />
+  
+  
+  
+  
+  <meta name="description" content="A quick guide to get your Hexo blog deployed from scratch.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo Deploy Beginner-Tutorial">
+<meta property="og:url" content="https://brieflyjangle.github.io/Tools/Hexo-Deploy-Beginner-Tutorial/index.html">
+<meta property="og:site_name" content="Huiwen Learning Notes">
+<meta property="og:description" content="A quick guide to get your Hexo blog deployed from scratch.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-02-01T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-14T12:36:24.132Z">
+<meta property="article:author" content="HuiWen">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="deploy">
+<meta property="article:tag" content="beginner">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Huiwen Learning Notes" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Huiwen Learning Notes" rel="home"> Huiwen Learning Notes </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="tags"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="about"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Tools/Hexo-Deploy-Beginner-Tutorial" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Hexo Deploy Beginner-Tutorial
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/Tools/Hexo-Deploy-Beginner-Tutorial/" class="article-date">
+	  <time datetime="2026-02-01T02:00:00.000Z" itemprop="datePublished">February 1, 2026</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A quick guide to get your Hexo blog deployed from scratch.</p>
+<span id="more"></span>
+<h2 id="Prerequisites">Prerequisites</h2>
+<ul>
+<li>Node.js (v12+)</li>
+<li>Git installed and configured</li>
+<li>A GitHub account</li>
+</ul>
+<h2 id="Step-1-Install-Hexo">Step 1: Install Hexo</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="Step-2-Create-a-New-Blog">Step 2: Create a New Blog</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init my-blog</span><br><span class="line"><span class="built_in">cd</span> my-blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<h2 id="Step-3-Preview-Locally">Step 3: Preview Locally</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>Visit <code>http://localhost:4000</code> in your browser.</p>
+<h2 id="Step-4-Create-a-New-Post">Step 4: Create a New Post</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;My First Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>Edit the generated file in <code>source/_posts/My-First-Post.md</code>.</p>
+<h3 id="Organising-Posts-by-Category">Organising Posts by Category</h3>
+<p>The proper way to create a post and place it in the correct category folder at the same time is to include the folder name in the title:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">&quot;FolderName/post-title&quot;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Examples:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">&quot;Hexo/my-new-hexo-post&quot;</span></span><br><span class="line">hexo new post <span class="string">&quot;Machine_learning/04-new-paper&quot;</span></span><br><span class="line">hexo new post <span class="string">&quot;Music/Music-Scales&quot;</span></span><br></pre></td></tr></table></figure>
+<p>This creates the file directly inside the matching subfolder:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">source/_posts/Hexo/my-new-hexo-post.md</span><br><span class="line">source/_posts/Machine_learning/04-new-paper.md</span><br><span class="line">source/_posts/Music/Music-Scales.md</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Important:</strong> Hexo does NOT automatically set the category from the folder name. You must also add <code>categories</code> in the frontmatter to match the folder:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">My</span> <span class="string">Post</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2026-01-01</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">FolderName</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Using-the-hexo-new-post-Claude-Skill">Using the <code>hexo-new-post</code> Claude Skill</h3>
+<p>To automate the above and avoid forgetting to set the category, use the <code>/hexo-new-post</code> skill in Claude Code. It will:</p>
+<ol>
+<li>Run <code>hexo new post &quot;Category/post-title&quot;</code> to create the file in the right folder</li>
+<li>Automatically add the matching <code>categories</code> frontmatter so folder and category are always in sync</li>
+<li>Confirm the file path back to you</li>
+</ol>
+<p><strong>How to invoke it:</strong></p>
+<p>Just tell Claude Code to create a new post naturally:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create a new post about Music Scales under Music</span><br><span class="line">new blog post: Tools/my-new-tool</span><br></pre></td></tr></table></figure>
+<p>Or invoke the skill directly:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/hexo-new-post</span><br></pre></td></tr></table></figure>
+<p><strong>Rules the skill enforces:</strong></p>
+<ul>
+<li>The <code>categories</code> frontmatter always matches the folder name exactly (case-sensitive)</li>
+<li>Never leaves <code>categories:</code> empty when a folder is used</li>
+<li>Always uses <code>hexo new post &quot;Folder/title&quot;</code> — never creates <code>.md</code> files manually</li>
+</ul>
+<h2 id="Step-5-Generate-Static-Files">Step 5: Generate Static Files</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<p>This creates the <code>public/</code> folder with your static site.</p>
+<h2 id="Step-6-Configure-Deployment">Step 6: Configure Deployment</h2>
+<p>Edit <code>_config.yml</code> and add your deploy settings:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+<p>Install the Git deployer plugin:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<h2 id="Step-7-Deploy">Step 7: Deploy</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+<p>Your site is now live at <code>https://username.github.io/</code>.</p>
+<h2 id="Useful-Commands">Useful Commands</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hexo new &quot;title&quot;</code></td>
+<td>Create a new post</td>
+</tr>
+<tr>
+<td><code>hexo server</code></td>
+<td>Start local server</td>
+</tr>
+<tr>
+<td><code>hexo generate</code></td>
+<td>Generate static files</td>
+</tr>
+<tr>
+<td><code>hexo deploy</code></td>
+<td>Deploy to remote</td>
+</tr>
+<tr>
+<td><code>hexo clean</code></td>
+<td>Clear cache and public folder</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Tips">Tips</h2>
+<ul>
+<li>Always run <code>hexo clean</code> before <code>hexo generate</code> if you changed themes or config.</li>
+<li>Use <code>hexo server --draft</code> to preview draft posts locally.</li>
+<li>Add <code>&lt;!-- more --&gt;</code> in your post to control where the excerpt cuts off on the homepage.</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/beginner/" rel="tag">beginner</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deploy/" rel="tag">deploy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Music/Music-Notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Music Notes
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Machine_learning/03-hubert-hidden-unit-bert/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">03 HuBERT — Hidden-Unit BERT</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prerequisites"><span class="nav-number">1.</span> <span class="nav-text">Prerequisites</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Install-Hexo"><span class="nav-number">2.</span> <span class="nav-text">Step 1: Install Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Create-a-New-Blog"><span class="nav-number">3.</span> <span class="nav-text">Step 2: Create a New Blog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-Preview-Locally"><span class="nav-number">4.</span> <span class="nav-text">Step 3: Preview Locally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-Create-a-New-Post"><span class="nav-number">5.</span> <span class="nav-text">Step 4: Create a New Post</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Organising-Posts-by-Category"><span class="nav-number">5.1.</span> <span class="nav-text">Organising Posts by Category</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-the-hexo-new-post-Claude-Skill"><span class="nav-number">5.2.</span> <span class="nav-text">Using the hexo-new-post Claude Skill</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-Generate-Static-Files"><span class="nav-number">6.</span> <span class="nav-text">Step 5: Generate Static Files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-Configure-Deployment"><span class="nav-number">7.</span> <span class="nav-text">Step 6: Configure Deployment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-Deploy"><span class="nav-number">8.</span> <span class="nav-text">Step 7: Deploy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Useful-Commands"><span class="nav-number">9.</span> <span class="nav-text">Useful Commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">10.</span> <span class="nav-text">Tips</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2026 Huiwen Learning Notes All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

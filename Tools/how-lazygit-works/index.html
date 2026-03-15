@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>How Lazygit Works | Huiwen Learning Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="developer-toolsgitlazygitterminal" />
+  
+  
+  
+  
+  <meta name="description" content="Lazygit is a terminal UI for Git that lets you manage your repository visually without leaving the command line — no need to memorise complex git commands.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How Lazygit Works">
+<meta property="og:url" content="https://brieflyjangle.github.io/Tools/how-lazygit-works/index.html">
+<meta property="og:site_name" content="Huiwen Learning Notes">
+<meta property="og:description" content="Lazygit is a terminal UI for Git that lets you manage your repository visually without leaving the command line — no need to memorise complex git commands.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-03-14T11:54:55.000Z">
+<meta property="article:modified_time" content="2026-03-14T12:36:24.133Z">
+<meta property="article:author" content="HuiWen">
+<meta property="article:tag" content="developer-tools">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="lazygit">
+<meta property="article:tag" content="terminal">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Huiwen Learning Notes" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Huiwen Learning Notes" rel="home"> Huiwen Learning Notes </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="tags"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="about"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Tools/how-lazygit-works" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      How Lazygit Works
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/Tools/how-lazygit-works/" class="article-date">
+	  <time datetime="2026-03-14T11:54:55.000Z" itemprop="datePublished">March 14, 2026</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Lazygit</strong> is a terminal UI for Git that lets you manage your repository visually without leaving the command line — no need to memorise complex git commands.</p>
+<span id="more"></span>
+<h2 id="What-is-Lazygit">What is Lazygit?</h2>
+<p>Lazygit wraps standard git commands behind a keyboard-driven interface. Instead of typing <code>git add</code>, <code>git commit</code>, <code>git push</code>, etc., you navigate panels with arrow keys and single keypresses.</p>
+<p>It runs entirely in the terminal, making it fast and available everywhere git is.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install on macOS</span></span><br><span class="line">brew install lazygit</span><br><span class="line"></span><br><span class="line"><span class="comment"># Open in your repo</span></span><br><span class="line">lazygit</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="The-Interface">The Interface</h2>
+<p>When you open lazygit, the screen is split into <strong>5 panels</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────┬──────────────────────────────────┐</span><br><span class="line">│   Status        │                                  │</span><br><span class="line">├─────────────────│           Diff / Preview          │</span><br><span class="line">│   Files         │                                  │</span><br><span class="line">├─────────────────│                                  │</span><br><span class="line">│   Branches      │                                  │</span><br><span class="line">├─────────────────┤                                  │</span><br><span class="line">│   Commits       │                                  │</span><br><span class="line">├─────────────────┤                                  │</span><br><span class="line">│   Stash         │                                  │</span><br><span class="line">└─────────────────┴──────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Panel</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Status</strong></td>
+<td>Current branch and repo state</td>
+</tr>
+<tr>
+<td><strong>Files</strong></td>
+<td>Unstaged and staged changes</td>
+</tr>
+<tr>
+<td><strong>Branches</strong></td>
+<td>Local and remote branches</td>
+</tr>
+<tr>
+<td><strong>Commits</strong></td>
+<td>Full commit history</td>
+</tr>
+<tr>
+<td><strong>Stash</strong></td>
+<td>Stashed changes</td>
+</tr>
+</tbody>
+</table>
+<p>Navigate between panels with the <strong>arrow keys</strong> or <strong>Tab</strong>. The right side always shows a <strong>diff/preview</strong> of whatever is selected.</p>
+<hr>
+<h2 id="Core-Workflow">Core Workflow</h2>
+<h3 id="1-Stage-Files">1. Stage Files</h3>
+<p>In the <strong>Files</strong> panel, press:</p>
+<ul>
+<li><code>Space</code> — stage or unstage a single file</li>
+<li><code>a</code> — stage or unstage <strong>all</strong> files</li>
+</ul>
+<p>Staged files move to the top of the list (shown in green).</p>
+<h3 id="2-Commit">2. Commit</h3>
+<p>Press <code>c</code> to commit. A prompt appears for your commit message. Type it and press Enter.</p>
+<p>For a more detailed commit with a body, press <code>C</code> (capital) to open your editor.</p>
+<h3 id="3-Push-Pull">3. Push &amp; Pull</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>P</code></td>
+<td>Push to remote</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Pull from remote</td>
+</tr>
+<tr>
+<td><code>f</code></td>
+<td>Fetch</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-Branches">4. Branches</h3>
+<p>Switch to the <strong>Branches</strong> panel and:</p>
+<ul>
+<li><code>Space</code> — checkout a branch</li>
+<li><code>n</code> — create a new branch</li>
+<li><code>d</code> — delete a branch</li>
+<li><code>r</code> — rebase current branch onto selected</li>
+</ul>
+<h3 id="5-View-Navigate-Commits">5. View &amp; Navigate Commits</h3>
+<p>Switch to the <strong>Commits</strong> panel to see history:</p>
+<ul>
+<li><code>Space</code> — checkout a commit</li>
+<li><code>s</code> — squash commit into the one below</li>
+<li><code>r</code> — rename a commit message</li>
+<li><code>d</code> — drop (delete) a commit</li>
+<li><code>p</code> — pick (reorder during rebase)</li>
+</ul>
+<hr>
+<h2 id="Useful-Shortcuts">Useful Shortcuts</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>?</code></td>
+<td>Show help / all keybindings</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Quit lazygit</td>
+</tr>
+<tr>
+<td><code>[</code> / <code>]</code></td>
+<td>Switch between panels</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>Edit file in your editor</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>Open file</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Search / filter</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>Undo last action</td>
+</tr>
+<tr>
+<td><code>ctrl+z</code></td>
+<td>Redo</td>
+</tr>
+<tr>
+<td><code>ctrl+r</code></td>
+<td>Switch recent repos</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="How-it-Works-Under-the-Hood">How it Works Under the Hood</h2>
+<p>Lazygit doesn’t replace git — it <strong>calls git commands</strong> on your behalf. Every action you take in the UI translates to one or more standard git commands running in the background.</p>
+<p>For example:</p>
+<ul>
+<li>Pressing <code>Space</code> on a file → <code>git add &lt;file&gt;</code> or <code>git restore --staged &lt;file&gt;</code></li>
+<li>Pressing <code>c</code> → <code>git commit</code></li>
+<li>Pressing <code>P</code> → <code>git push</code></li>
+</ul>
+<p>This means lazygit is safe to use alongside the regular <code>git</code> CLI — they both operate on the same repository state.</p>
+<hr>
+<h2 id="Why-Use-Lazygit">Why Use Lazygit?</h2>
+<table>
+<thead>
+<tr>
+<th>Without Lazygit</th>
+<th>With Lazygit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git status</code> + <code>git add</code> + <code>git diff</code></td>
+<td>One screen shows everything</td>
+</tr>
+<tr>
+<td><code>git log --oneline --graph</code></td>
+<td>Visual commit tree in Commits panel</td>
+</tr>
+<tr>
+<td><code>git stash</code>, <code>git stash pop</code></td>
+<td>Stash panel with single keypresses</td>
+</tr>
+<tr>
+<td>Interactive rebase via <code>git rebase -i</code></td>
+<td>Edit commits directly in Commits panel</td>
+</tr>
+<tr>
+<td>Memorise many commands</td>
+<td>Just press <code>?</code> to see all options</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Tools/">Tools</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/developer-tools/" rel="tag">developer-tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lazygit/" rel="tag">lazygit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal/" rel="tag">terminal</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Tools/understanding-npm-and-plugins/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Understanding npm and How npm Plugins Work</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Lazygit"><span class="nav-number">1.</span> <span class="nav-text">What is Lazygit?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Interface"><span class="nav-number">2.</span> <span class="nav-text">The Interface</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Core-Workflow"><span class="nav-number">3.</span> <span class="nav-text">Core Workflow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Stage-Files"><span class="nav-number">3.1.</span> <span class="nav-text">1. Stage Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Commit"><span class="nav-number">3.2.</span> <span class="nav-text">2. Commit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Push-Pull"><span class="nav-number">3.3.</span> <span class="nav-text">3. Push &amp; Pull</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Branches"><span class="nav-number">3.4.</span> <span class="nav-text">4. Branches</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-View-Navigate-Commits"><span class="nav-number">3.5.</span> <span class="nav-text">5. View &amp; Navigate Commits</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Useful-Shortcuts"><span class="nav-number">4.</span> <span class="nav-text">Useful Shortcuts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-it-Works-Under-the-Hood"><span class="nav-number">5.</span> <span class="nav-text">How it Works Under the Hood</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Use-Lazygit"><span class="nav-number">6.</span> <span class="nav-text">Why Use Lazygit?</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2026 Huiwen Learning Notes All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

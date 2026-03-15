@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>01 Self-Supervised Learning for Speech | Huiwen Learning Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="machine-learningself-supervised-learningspeech" />
+  
+  
+  
+  
+  <meta name="description" content="This is the first post in a three-part series covering the evolution of self-supervised learning (SSL) in speech processing, from foundational concepts through wav2vec to HuBERT.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01 Self-Supervised Learning for Speech">
+<meta property="og:url" content="https://brieflyjangle.github.io/Machine_learning/01-self-supervised-learning-for-speech/index.html">
+<meta property="og:site_name" content="Huiwen Learning Notes">
+<meta property="og:description" content="This is the first post in a three-part series covering the evolution of self-supervised learning (SSL) in speech processing, from foundational concepts through wav2vec to HuBERT.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-01-01T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-14T12:36:24.040Z">
+<meta property="article:author" content="HuiWen">
+<meta property="article:tag" content="machine-learning">
+<meta property="article:tag" content="self-supervised-learning">
+<meta property="article:tag" content="speech">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Huiwen Learning Notes" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+<meta name="generator" content="Hexo 7.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-dracula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Huiwen Learning Notes" rel="home"> Huiwen Learning Notes </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="tags"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="about"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="posts-Machine_learning/01-self-supervised-learning-for-speech" style="width: 66%; float:left;" class="article article-type-posts" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      01 Self-Supervised Learning for Speech
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/Machine_learning/01-self-supervised-learning-for-speech/" class="article-date">
+	  <time datetime="2025-01-01T02:00:00.000Z" itemprop="datePublished">January 1, 2025</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is the first post in a three-part series covering the evolution of self-supervised learning (SSL) in speech processing, from foundational concepts through wav2vec to HuBERT.</p>
+<span id="more"></span>
+<h2 id="Why-Self-Supervised-Learning">Why Self-Supervised Learning?</h2>
+<p>Labeled speech data is expensive. Transcribing audio requires human annotators, and for many languages or domains, large labeled corpora simply do not exist. Meanwhile, <strong>unlabeled</strong> speech is abundant — podcasts, audiobooks, phone calls, and broadcast media produce enormous volumes of raw audio every day.</p>
+<p>Self-supervised learning bridges this gap by designing <strong>pretext tasks</strong> that extract supervision signals from the data itself, learning general-purpose representations that transfer to downstream tasks (ASR, speaker verification, emotion recognition, etc.) with minimal labeled data.</p>
+<h2 id="The-SSL-Framework">The SSL Framework</h2>
+<p>A typical SSL pipeline for speech has three stages:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐</span><br><span class="line">│  1. Pre-train    │ ──► │  2. Fine-tune    │ ──► │  3. Evaluate     │</span><br><span class="line">│  (unlabeled)     │     │  (small labeled) │     │  (downstream)    │</span><br><span class="line">└─────────────────┘     └─────────────────┘     └─────────────────┘</span><br></pre></td></tr></table></figure>
+<h3 id="Stage-1-—-Pre-training">Stage 1 — Pre-training</h3>
+<p>The model learns representations from <strong>unlabeled audio</strong> by solving a pretext task. No transcriptions or labels are needed.</p>
+<h3 id="Stage-2-—-Fine-tuning">Stage 2 — Fine-tuning</h3>
+<p>A task-specific head (e.g., a CTC decoder for ASR) is added on top of the pre-trained encoder. The full model is fine-tuned on a <strong>small labeled dataset</strong>.</p>
+<h3 id="Stage-3-—-Evaluation">Stage 3 — Evaluation</h3>
+<p>The model is evaluated on the target downstream task and compared to supervised baselines.</p>
+<h2 id="Categories-of-SSL-Pretext-Tasks">Categories of SSL Pretext Tasks</h2>
+<h3 id="1-Generative-Autoregressive">1. Generative (Autoregressive)</h3>
+<p>Predict the next frame given past context, similar to language modeling.</p>
+<ul>
+<li>The model sees frames <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>x</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x_1, x_2, \ldots, x_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and predicts <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">x_{t+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span>.</li>
+<li>Example: <strong>Autoregressive Predictive Coding (APC)</strong>.</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">L</mi><mtext>AR</mtext></msub><mo>=</mo><munder><mo>∑</mo><mi>t</mi></munder><mi mathvariant="normal">∥</mi><msub><mi>x</mi><mrow><mi>t</mi><mo>+</mo><mi>k</mi></mrow></msub><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mo>≤</mo><mi>t</mi></mrow></msub><mo stretchy="false">)</mo><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\mathcal{L}_{\text{AR}} = \sum_{t} \| x_{t+k} - f(x_{\leq t}) \|^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">AR</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3em;vertical-align:-1.25em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.9em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∥</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2952em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">≤</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2452em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="2-Contrastive">2. Contrastive</h3>
+<p>Learn to distinguish a true future frame from negatives sampled from other positions or utterances.</p>
+<ul>
+<li>The model produces a context vector <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">c_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and must identify the correct future <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mrow><mi>t</mi><mo>+</mo><mi>k</mi></mrow></msub></mrow><annotation encoding="application/x-tex">z_{t+k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span> among distractors.</li>
+<li>Example: <strong>Contrastive Predictive Coding (CPC)</strong>, <strong>wav2vec</strong>.</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi mathvariant="script">L</mi><mtext>contrastive</mtext></msub><mo>=</mo><mo>−</mo><mi>log</mi><mo>⁡</mo><mfrac><mrow><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mtext>sim</mtext><mo stretchy="false">(</mo><msub><mi>c</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mrow><mi>t</mi><mo>+</mo><mi>k</mi></mrow></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><mrow><munder><mo>∑</mo><mi>j</mi></munder><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mtext>sim</mtext><mo stretchy="false">(</mo><msub><mi>c</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>z</mi><mi>j</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">\mathcal{L}_{\text{contrastive}} = -\log \frac{\exp(\text{sim}(c_t, z_{t+k}))}{\sum_{j} \exp(\text{sim}(c_t, z_j))}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">contrastive</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.5488em;vertical-align:-1.1218em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord text"><span class="mord">sim</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">))</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">exp</span><span class="mopen">(</span><span class="mord text"><span class="mord">sim</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mclose">))</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1218em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="3-Masked-Prediction">3. Masked Prediction</h3>
+<p>Mask portions of the input and predict the masked content, analogous to BERT’s masked language modeling.</p>
+<ul>
+<li>The model sees a partially masked spectrogram or latent sequence and reconstructs the hidden parts.</li>
+<li>Example: <strong>wav2vec 2.0</strong>, <strong>HuBERT</strong>.</li>
+</ul>
+<h3 id="4-Multi-task-Hybrid">4. Multi-task / Hybrid</h3>
+<p>Combine multiple objectives (e.g., contrastive + diversity loss in wav2vec 2.0).</p>
+<h2 id="Why-Speech-SSL-Is-Harder-Than-Text-SSL">Why Speech SSL Is Harder Than Text SSL</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Challenge</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Continuous signal</td>
+<td style="text-align:left">Speech is a continuous waveform, not discrete tokens. There is no natural vocabulary.</td>
+</tr>
+<tr>
+<td style="text-align:left">Variable rate</td>
+<td style="text-align:left">Phonemes vary in duration; there is no fixed alignment between frames and linguistic units.</td>
+</tr>
+<tr>
+<td style="text-align:left">Speaker variability</td>
+<td style="text-align:left">The same word sounds different across speakers, accents, and recording conditions.</td>
+</tr>
+<tr>
+<td style="text-align:left">Long sequences</td>
+<td style="text-align:left">A 10-second utterance at 16 kHz is 160,000 samples — far longer than a typical text sentence.</td>
+</tr>
+</tbody>
+</table>
+<p>These challenges motivate the architectural and objective design choices in wav2vec and HuBERT, which we cover in the next two posts.</p>
+<h2 id="Key-Takeaways">Key Takeaways</h2>
+<ol>
+<li>SSL exploits <strong>unlabeled data</strong> to learn representations, reducing dependence on costly transcriptions.</li>
+<li>The three main pretext task families are <strong>generative</strong>, <strong>contrastive</strong>, and <strong>masked prediction</strong>.</li>
+<li>Speech presents unique challenges (continuous signal, variable rate, speaker variability) that require specialized model designs.</li>
+</ol>
+<h2 id="What’s-Next">What’s Next</h2>
+<p>In <a href="/Machine_learning/02-wav2vec-to-wav2vec2/">Part 2</a>, we trace the evolution from wav2vec to wav2vec 2.0, showing how contrastive learning and quantization combine with masked prediction to produce state-of-the-art speech representations.</p>
+<h2 id="References">References</h2>
+<ul>
+<li>Oord et al., “Representation Learning with Contrastive Predictive Coding,” 2018. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1807.03748">arXiv:1807.03748</a></li>
+<li>Chung et al., “An Unsupervised Autoregressive Model for Speech Representation Learning,” 2019. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1904.03240">arXiv:1904.03240</a></li>
+<li>Liu et al., “TERA: Self-Supervised Learning of Transformer Encoder Representation for Speech,” 2021. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2007.06028">arXiv:2007.06028</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Machine-Learning/">Machine Learning</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/machine-learning/" rel="tag">machine-learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/self-supervised-learning/" rel="tag">self-supervised-learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/speech/" rel="tag">speech</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Machine_learning/02-wav2vec-to-wav2vec2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          02 From wav2vec to wav2vec 2.0
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Self-Supervised-Learning"><span class="nav-number">1.</span> <span class="nav-text">Why Self-Supervised Learning?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-SSL-Framework"><span class="nav-number">2.</span> <span class="nav-text">The SSL Framework</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stage-1-%E2%80%94-Pre-training"><span class="nav-number">2.1.</span> <span class="nav-text">Stage 1 — Pre-training</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stage-2-%E2%80%94-Fine-tuning"><span class="nav-number">2.2.</span> <span class="nav-text">Stage 2 — Fine-tuning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stage-3-%E2%80%94-Evaluation"><span class="nav-number">2.3.</span> <span class="nav-text">Stage 3 — Evaluation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Categories-of-SSL-Pretext-Tasks"><span class="nav-number">3.</span> <span class="nav-text">Categories of SSL Pretext Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Generative-Autoregressive"><span class="nav-number">3.1.</span> <span class="nav-text">1. Generative (Autoregressive)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Contrastive"><span class="nav-number">3.2.</span> <span class="nav-text">2. Contrastive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Masked-Prediction"><span class="nav-number">3.3.</span> <span class="nav-text">3. Masked Prediction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Multi-task-Hybrid"><span class="nav-number">3.4.</span> <span class="nav-text">4. Multi-task &#x2F; Hybrid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Speech-SSL-Is-Harder-Than-Text-SSL"><span class="nav-number">4.</span> <span class="nav-text">Why Speech SSL Is Harder Than Text SSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Takeaways"><span class="nav-number">5.</span> <span class="nav-text">Key Takeaways</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What%E2%80%99s-Next"><span class="nav-number">6.</span> <span class="nav-text">What’s Next</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2026 Huiwen Learning Notes All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
